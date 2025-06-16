@@ -13,7 +13,9 @@
 	id="header"
 	class="mx-auto flex w-full max-w-5xl items-center justify-between py-4 text-sm font-medium text-zinc-700"
 >
-	<a href="/" aria-label="logo"><div class="size-10 border"></div></a>
+	<a href="/" class="flex items-center gap-2 tracking-tight"
+		><img alt="logo" class="size-10" src="/devmatter-rounded.png" /> DevMatter</a
+	>
 	<div class="flex items-center gap-10">
 		{#if user}
 			<a href="/docs">Docs</a>

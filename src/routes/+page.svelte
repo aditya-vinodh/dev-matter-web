@@ -9,6 +9,10 @@
 	let { data }: PageProps = $props();
 </script>
 
+<svelte:head>
+	<title>DevMatter</title>
+</svelte:head>
+
 <Header user={data.user} />
 {#if !data.user}
 	<div class="mx-auto grid w-full max-w-5xl grid-cols-12 py-20">
