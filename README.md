@@ -1,38 +1,23 @@
-# sv
+# DevMatter
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A better way to manage your apps!
 
-## Creating a project
+I've been working on this project as an easy way to manage my own apps. I have a lot of ideas for things I want to build, so naturally I am working on multiple projects simultaneously. There are a lot of trivial yet annoying things I need to do every time I build software to manage and monitor it. So, I decided to build __DevMatter__, a lightweight app that you can easily self-host to manage repeated and trivial tasks you might encounter.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The most important thing I wanted was a way for me to send form data somewhere so that I can easily view it later and be notified when submissions occur. I couldn't find an existing solution that gave the flexbility of customizing and integrating the form with my apps that way I liked, and none had convenient options to view them on the go. Thus, that is the first feature I built!
 
-```bash
-# create a new project in the current directory
-npx sv create
+# Features
 
-# create a new project in my-app
-npx sv create my-app
-```
+1. Forms
 
-## Developing
+An extremely simple API that allows you to create forms with a schema that you define, and save submissions programatically. You get to control the entire form experience, and deal with the data later however you like.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Get notified on the go using a clean mobile app experience. (Starting with iOS only. Will expand to Android if there is sufficient interest)
 
-```bash
-npm run dev
+2. _More features coming soon..._
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+# Get started
 
-## Building
+Head over to [Dev Matter](https://devmatter.app) to start building using our cloud-hosted version.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Or, self-host it using Docker `adityavinodh/dev-matter`
