@@ -8,7 +8,7 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<a href="/" class="mx-auto" aria-label="logo">
-			<div class="mx-auto size-10 border"></div>
+			<img class="mx-auto size-10" src="/devmatter-rounded.png" alt="logo" />
 		</a>
 		<h2 class="mt-10 text-center text-2xl/9 font-semibold tracking-tight text-gray-900">
 			Sign up for an account
