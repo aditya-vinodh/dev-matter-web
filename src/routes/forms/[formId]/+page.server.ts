@@ -135,5 +135,26 @@ export const actions = {
 		}
 
 		return { success: true };
+	},
+	delete: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+
+		const formId = event.params.formId;
+		const res = await event.fetch(`${env.API_URL}/forms/${formId}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${event.cookies.get('session')}`,
+				'Content-Type': 'application/json'
+			}
+		});
+
+		const data = await res.json();
+		if (!res.ok) {
+			return fail(res.status, data.error);
+		}
+
+		return redirect(301, '/');
 	}
 };

@@ -146,18 +146,59 @@
 					>
 				{/if}
 			</p>
-			<form action="?/updateVisibility" use:enhance method="POST">
-				<input type="hidden" name="public" value={!data.form.public} />
-				<button
-					type="submit"
-					class="flex w-fit items-center gap-2 rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
-				>
-					{#if data.form.public}
-						<Lock size={16} class="stroke-zinc-700" />Make private
-					{:else}
-						<Globe size={16} class="stroke-zinc-700" />Make public{/if}
-				</button>
-			</form>
+			<div class="flex items-center gap-2">
+				<form action="?/updateVisibility" use:enhance method="POST">
+					<input type="hidden" name="public" value={!data.form.public} />
+					<button
+						type="submit"
+						class="flex w-fit items-center gap-2 rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+					>
+						{#if data.form.public}
+							<Lock size={16} class="stroke-zinc-700" />Make private
+						{:else}
+							<Globe size={16} class="stroke-zinc-700" />Make public{/if}
+					</button>
+				</form>
+				<AlertDialog.Root>
+					<AlertDialog.Trigger
+						class="flex w-fit items-center gap-2 rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium text-red-700 transition hover:bg-red-50"
+					>
+						<Trash size={16} class="stroke-red-700" />Delete
+					</AlertDialog.Trigger>
+					<AlertDialog.Portal>
+						<AlertDialog.Overlay
+							class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/30"
+						/>
+						<AlertDialog.Content
+							class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white shadow-xl outline-hidden sm:max-w-[490px] md:w-full"
+						>
+							<div class="px-5 pt-5">
+								<h3 class="font-medium">Delete form</h3>
+								<p class="mb-5 text-sm text-balance text-zinc-500">
+									Are you sure you want to delete this form? This is action can not be undone. It
+									will delete all the responses associated with it.
+								</p>
+							</div>
+							<div
+								class="mt-5 flex items-center justify-end gap-3 rounded-b-xl bg-zinc-50 p-5 py-3"
+							>
+								<form action="/forms/{data.form.id}?/delete" method="POST" use:enhance>
+									<AlertDialog.Cancel
+										type="button"
+										class="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+										>Cancel</AlertDialog.Cancel
+									>
+									<AlertDialog.Action
+										type="submit"
+										class="rounded-xl bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-600/90"
+										>Delete</AlertDialog.Action
+									>
+								</form>
+							</div>
+						</AlertDialog.Content>
+					</AlertDialog.Portal>
+				</AlertDialog.Root>
+			</div>
 		</div>
 	</div>
 	<div class="mx-auto mt-10 w-full max-w-5xl">
