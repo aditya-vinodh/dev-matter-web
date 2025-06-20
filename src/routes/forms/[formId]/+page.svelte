@@ -4,11 +4,14 @@
 	import NotebookPen from '@lucide/svelte/icons/notebook-pen';
 	import Lock from '@lucide/svelte/icons/lock';
 	import Globe from '@lucide/svelte/icons/globe';
+	import Archive from '@lucide/svelte/icons/archive';
 	import X from '@lucide/svelte/icons/x';
 	import type { PageProps } from './$types';
 	import { enhance } from '$app/forms';
 
 	let { data }: PageProps = $props();
+
+	let formNameChanged = $state(false);
 
 	// eslint-disable-next-line
 	let fields = $state(getLatestVersion(data.form.versions).fields);
@@ -114,8 +117,9 @@
 			<form action="?/updateName" method="POST" use:enhance bind:this={nameForm}>
 				<input
 					value={data.form.name}
-					onblur={() => nameForm.submit()}
+					onblur={() => formNameChanged && nameForm.submit()}
 					name="name"
+					oninput={() => (formNameChanged = true)}
 					aria-label="Form name"
 					class="mb-2 cursor-text appearance-none rounded-lg border-transparent p-0 text-3xl font-semibold tracking-tight transition hover:bg-zinc-100 focus-visible:border focus-visible:border-blue-600 focus-visible:ring-1 focus-visible:ring-blue-600 focus-visible:outline-none"
 				/>
@@ -252,12 +256,19 @@
 				</form>
 			</div>
 			<div class="col-span-9">
-				<h2 class="mb-3 flex items-center gap-2 text-lg font-medium tracking-tight">
-					Responses <span
-						class="rounded-lg border border-blue-300 bg-blue-100 p-0.5 px-2 text-sm text-blue-900"
-						>{data.form.responseCount}</span
+				<div class="mb-3 flex items-center justify-between">
+					<h2 class="flex items-center gap-2 text-lg font-medium tracking-tight">
+						Responses <span
+							class="rounded-lg border border-blue-300 bg-blue-100 p-0.5 px-2 text-sm text-blue-900"
+							>{data.form.responseCount}</span
+						>
+					</h2>
+					<a
+						href="/forms/{data.form.id}/archive"
+						class="flex items-center gap-2 text-sm text-zinc-500 underline"
+						><Archive size={16} /> View archive</a
 					>
-				</h2>
+				</div>
 				<div class="flex flex-col gap-4">
 					{#each data.form.responses as response (response.id)}
 						{@const version = data.form.versions.find(
@@ -271,9 +282,10 @@
 								<div>
 									<form action="/responses/{response.id}?/archive" use:enhance method="POST">
 										<button
+											title="Archive response"
 											type="submit"
 											class="rounded-md border border-zinc-300 bg-white p-0.5 shadow-sm"
-											>Archive</button
+											><Archive size={14} /></button
 										>
 									</form>
 								</div>
