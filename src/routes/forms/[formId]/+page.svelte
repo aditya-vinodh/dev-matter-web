@@ -82,6 +82,20 @@
 		fields.splice(index, 1);
 		formDirty = true;
 	}
+
+	function formatDate(date: string) {
+		const dateObject = new Date(date);
+		const normalizedDateObject = new Date(dateObject.getTime() + 4 * 60 * 60 * 1000);
+		const intlObj = new Intl.DateTimeFormat('en-US', {
+			month: 'long',
+			day: 'numeric',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			hour12: true
+		});
+		return intlObj.format(normalizedDateObject);
+	}
 </script>
 
 <Header user={data.user} />
@@ -238,13 +252,32 @@
 				</form>
 			</div>
 			<div class="col-span-9">
-				<h2 class="mb-3 text-lg font-medium tracking-tight">Responses</h2>
+				<h2 class="mb-3 flex items-center gap-2 text-lg font-medium tracking-tight">
+					Responses <span
+						class="rounded-lg border border-blue-300 bg-blue-100 p-0.5 px-2 text-sm text-blue-900"
+						>{data.form.responseCount}</span
+					>
+				</h2>
 				<div class="flex flex-col gap-4">
 					{#each data.form.responses as response (response.id)}
 						{@const version = data.form.versions.find(
 							(version) => version.id === response.formVersionId
 						)}
 						<div class="flex flex-col gap-2 rounded-sm border border-zinc-300 bg-zinc-100 p-1">
+							<div
+								class="mb-2 flex items-center justify-between border-b border-zinc-300 pb-1 text-xs"
+							>
+								<span class="italic">{formatDate(response.createdAt)}</span>
+								<div>
+									<form action="/responses/{response.id}?/archive" use:enhance method="POST">
+										<button
+											type="submit"
+											class="rounded-md border border-zinc-300 bg-white p-0.5 shadow-sm"
+											>Archive</button
+										>
+									</form>
+								</div>
+							</div>
 							{#each Object.entries(response.response) as field (field[0])}
 								<div>
 									<p class="mb-1 text-xs font-medium text-zinc-500">
