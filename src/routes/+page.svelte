@@ -15,11 +15,11 @@
 
 <Header user={data.user} />
 {#if !data.user}
-	<div class="mx-auto grid w-full max-w-5xl grid-cols-12 py-20">
-		<div class="col-span-8 flex flex-col justify-center">
+	<div class="mx-auto grid w-full max-w-xl grid-cols-12 px-4 py-20 lg:max-w-3xl xl:max-w-5xl">
+		<div class="col-span-12 flex flex-col justify-center lg:col-span-8">
 			<a
 				href="/changelog"
-				class="flex w-fit items-center gap-4 rounded-full border border-zinc-300 px-3 py-1.5 text-sm"
+				class="flex w-fit items-center gap-4 rounded-full border border-zinc-300 px-2 py-1 text-xs xl:px-3 xl:py-1.5 xl:text-sm"
 			>
 				<span class="font-medium text-blue-600">Just shipped v0.1</span>
 				<span class="h-5 border border-r-0 border-zinc-300"></span>
@@ -27,28 +27,28 @@
 					See what's new <ChevronRight size={16} class="stroke-zinc-700" />
 				</div>
 			</a>
-			<h1 class="py-4 text-7xl font-semibold tracking-tighter text-balance">
+			<h1 class="py-4 text-6xl font-semibold tracking-tighter text-balance xl:text-7xl">
 				A better way to manage your apps
 			</h1>
-			<p class="py-4 text-xl font-medium text-balance text-zinc-500">
+			<p class="py-4 text-lg font-medium text-balance text-zinc-500 xl:text-xl">
 				Collect data from contact, feedback, and support forms. Get notified and respond to your
 				users on time and on the go!
 			</p>
 			<div class="my-4 flex items-center gap-4">
 				<a
 					href="/signup"
-					class="rounded-xl bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-600/90"
+					class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-600/90 xl:text-base"
 					>Start building</a
 				>
 				<a
 					href="/docs"
-					class="flex items-center gap-2 rounded-xl px-4 py-2 font-medium transition hover:bg-zinc-100"
+					class="flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition hover:bg-zinc-100 xl:text-base"
 					>Learn more <ArrowRight size={16} /></a
 				>
 			</div>
 		</div>
-		<div class="col-span-4">
-			<div class="mx-auto h-96 w-72 border"></div>
+		<div class="col-span-12 lg:col-span-4">
+			<div class="mx-auto h-72 w-52 border xl:h-96 xl:w-72"></div>
 		</div>
 	</div>
 {:else}

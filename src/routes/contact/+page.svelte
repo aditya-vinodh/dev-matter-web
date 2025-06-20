@@ -8,16 +8,16 @@
 
 <Header user={data.user} />
 
-<div class="mx-auto w-full max-w-5xl pt-10 pb-32">
+<div class="mx-auto w-full max-w-xl px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<div class="grid w-full grid-cols-2 gap-6">
-		<div>
+		<div class="col-span-2 sm:col-span-1">
 			<h1 class="mb-5 text-3xl font-semibold tracking-tight">Contact us</h1>
 			<p class="font-medium text-balance text-zinc-600">
 				Have any questions about the product, features, or pricing? Contact us any time. We'll get
 				back to you within 24 hours.
 			</p>
 		</div>
-		<div>
+		<div class="col-span-2 sm:col-span-1">
 			<form class="flex flex-col gap-6">
 				<div class="flex flex-col gap-1">
 					<label for="name" class="text-sm font-medium text-zinc-600">Name*</label>

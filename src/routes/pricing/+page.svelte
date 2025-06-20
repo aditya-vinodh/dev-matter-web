@@ -8,7 +8,7 @@
 
 <Header user={data.user} />
 
-<div class="mx-auto w-full max-w-5xl pt-10 pb-32">
+<div class="mx-auto w-full max-w-xl px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<p class="mb-3 text-center text-3xl font-semibold tracking-tight text-balance">
 		The best way to collect form submissions; made for developers
 	</p>
@@ -18,7 +18,7 @@
 	</p>
 
 	<div class="mx-auto mt-20 grid w-full max-w-2xl grid-cols-2 gap-2">
-		<div class="rounded-xl border border-zinc-300 p-4 px-8 pb-8 shadow-sm">
+		<div class="col-span-2 rounded-xl border border-zinc-300 p-4 px-8 pb-8 shadow-sm sm:col-span-1">
 			<div class="flex items-center justify-between">
 				<p class="text-lg font-semibold tracking-tight">Free</p>
 				<div>
@@ -46,11 +46,11 @@
 				</div>
 				<div class="flex items-center gap-2">
 					<Check size={16} class="stroke-blue-600" />
-					<p>100 submissions</p>
+					<p>100 submissions/month</p>
 				</div>
 			</div>
 		</div>
-		<div class="rounded-xl border border-zinc-300 p-4 px-8 pb-8 shadow-sm">
+		<div class="col-span-2 rounded-xl border border-zinc-300 p-4 px-8 pb-8 shadow-sm sm:col-span-1">
 			<div class="flex items-center justify-between">
 				<p class="text-lg font-semibold tracking-tight">Launch</p>
 				<div>
@@ -78,9 +78,15 @@
 				</div>
 				<div class="flex items-center gap-2">
 					<Check size={16} class="stroke-blue-600" />
-					<p>1000 submissions</p>
+					<p>1000 submissions/month</p>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div
+		class="mx-auto mt-10 w-full max-w-2xl rounded-xl border border-zinc-300 p-4 text-center text-sm shadow-md"
+	>
+		Need more features or limits? <a href="/contact" class="underline">Contact us</a> for a custom plan!
 	</div>
 </div>
