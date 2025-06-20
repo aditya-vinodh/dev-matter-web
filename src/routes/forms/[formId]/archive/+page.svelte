@@ -5,8 +5,10 @@
 	import ArchiveRestore from '@lucide/svelte/icons/archive-restore';
 	import type { PageProps } from './$types';
 	import { enhance } from '$app/forms';
+	import { Toaster, toast } from 'svelte-sonner';
 
 	let { data }: PageProps = $props();
+	let formResponses = $state(data.form.responses);
 
 	function formatDate(date: string) {
 		const dateObject = new Date(date);
@@ -40,13 +42,24 @@
 		</div>
 	</div>
 	<div class="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-4">
-		{#each data.form.responses as response (response.id)}
+		{#each formResponses as response (response.id)}
 			{@const version = data.form.versions.find((version) => version.id === response.formVersionId)}
 			<div class="flex flex-col gap-2 rounded-sm border border-zinc-300 bg-zinc-100 p-1">
 				<div class="mb-2 flex items-center justify-between border-b border-zinc-300 pb-1 text-xs">
 					<span class="italic">{formatDate(response.createdAt)}</span>
 					<div>
-						<form action="/responses/{response.id}?/restore" use:enhance method="POST">
+						<form
+							action="/responses/{response.id}?/restore"
+							use:enhance={() => {
+								return async (event) => {
+									if (event.result.type === 'success') {
+										toast.success('Response restored!');
+										formResponses = formResponses.filter((r) => r.id !== response.id);
+									}
+								};
+							}}
+							method="POST"
+						>
 							<button
 								title="Restore response"
 								type="submit"
@@ -76,3 +89,5 @@
 		</div>
 	{/if}
 </div>
+
+<Toaster />

@@ -45,5 +45,26 @@ export const actions = {
 		}
 
 		return { success: true };
+	},
+	delete: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+		const responseId = event.params.responseId;
+
+		const res = await event.fetch(`${env.API_URL}/responses/${responseId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${event.cookies.get('session') ?? ''}`
+			}
+		});
+
+		const data = await res.json();
+		if (!res.ok) {
+			return fail(res.status, { error: data.message });
+		}
+
+		return { success: true };
 	}
 };

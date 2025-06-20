@@ -14,6 +14,9 @@ importers:
       bits-ui:
         specifier: ^2.5.0
         version: 2.5.0(@internationalized/date@3.8.2)(svelte@5.33.18)
+      svelte-sonner:
+        specifier: ^1.0.5
+        version: 1.0.5(svelte@5.33.18)
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -1441,6 +1444,11 @@ packages:
       svelte:
         optional: true
 
+  svelte-sonner@1.0.5:
+    resolution: {integrity: sha512-9dpGPFqKb/QWudYqGnEz93vuY+NgCEvyNvxoCLMVGw6sDN/3oVeKV1xiEirW2E1N3vJEyj5imSBNOGltQHA7mg==}
+    peerDependencies:
+      svelte: ^5.0.0
+
   svelte-toolbelt@0.9.1:
     resolution: {integrity: sha512-wBX6MtYw/kpht80j5zLpxJyR9soLizXPIAIWEVd9llAi17SR44ZdG291bldjB7r/K5duC0opDFcuhk2cA1hb8g==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
@@ -2763,6 +2771,11 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.5.4)
       postcss-selector-parser: 7.1.0
     optionalDependencies:
+      svelte: 5.33.18
+
+  svelte-sonner@1.0.5(svelte@5.33.18):
+    dependencies:
+      runed: 0.28.0(svelte@5.33.18)
       svelte: 5.33.18
 
   svelte-toolbelt@0.9.1(svelte@5.33.18):

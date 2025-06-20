@@ -5,11 +5,15 @@
 	import Lock from '@lucide/svelte/icons/lock';
 	import Globe from '@lucide/svelte/icons/globe';
 	import Archive from '@lucide/svelte/icons/archive';
+	import Trash from '@lucide/svelte/icons/trash';
 	import X from '@lucide/svelte/icons/x';
 	import type { PageProps } from './$types';
+	import { Toaster, toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
+	import { AlertDialog } from 'bits-ui';
 
 	let { data }: PageProps = $props();
+	let formResponses = $state(data.form.responses);
 
 	let formNameChanged = $state(false);
 
@@ -270,7 +274,7 @@
 					>
 				</div>
 				<div class="flex flex-col gap-4">
-					{#each data.form.responses as response (response.id)}
+					{#each formResponses as response (response.id)}
 						{@const version = data.form.versions.find(
 							(version) => version.id === response.formVersionId
 						)}
@@ -279,8 +283,21 @@
 								class="mb-2 flex items-center justify-between border-b border-zinc-300 pb-1 text-xs"
 							>
 								<span class="italic">{formatDate(response.createdAt)}</span>
-								<div>
-									<form action="/responses/{response.id}?/archive" use:enhance method="POST">
+								<div class="flex items-center gap-1">
+									<form
+										action="/responses/{response.id}?/archive"
+										use:enhance={() => {
+											return async (event) => {
+												if (event.result.type === 'success') {
+													toast.success('Response has been archived!');
+													formResponses = formResponses.filter(
+														(_response) => _response.id !== response.id
+													);
+												}
+											};
+										}}
+										method="POST"
+									>
 										<button
 											title="Archive response"
 											type="submit"
@@ -288,6 +305,57 @@
 											><Archive size={14} /></button
 										>
 									</form>
+									<AlertDialog.Root>
+										<AlertDialog.Trigger
+											class="rounded-md border border-zinc-300 bg-white p-0.5 text-red-800 shadow-sm"
+											title="Delete response"
+										>
+											<Trash size={14} />
+										</AlertDialog.Trigger>
+										<AlertDialog.Portal>
+											<AlertDialog.Overlay
+												class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/30"
+											/>
+											<AlertDialog.Content
+												class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white shadow-xl outline-hidden sm:max-w-[490px] md:w-full"
+											>
+												<div class="px-5 pt-5">
+													<h3 class="font-medium">Delete response</h3>
+													<p class="mb-5 text-sm text-balance text-zinc-500">
+														Are you sure you want to delete this response? This action cannot be
+														undone.
+													</p>
+												</div>
+												<div
+													class="mt-5 flex items-center justify-end gap-3 rounded-b-xl bg-zinc-50 p-5 py-3"
+												>
+													<AlertDialog.Cancel
+														type="button"
+														class="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm
+														font-medium text-zinc-700 transition hover:bg-zinc-100">Cancel</AlertDialog.Cancel
+													>
+													<form
+														action="/responses/{response.id}?/delete"
+														method="POST"
+														use:enhance={() => {
+															return async (event) => {
+																if (event.result.type === 'success') {
+																	toast.success('Response deleted!');
+																	formResponses = formResponses.filter((r) => response.id !== r.id);
+																}
+															};
+														}}
+													>
+														<AlertDialog.Action
+															type="submit"
+															class="rounded-xl bg-red-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-600/90"
+															>Delete</AlertDialog.Action
+														>
+													</form>
+												</div>
+											</AlertDialog.Content>
+										</AlertDialog.Portal>
+									</AlertDialog.Root>
 								</div>
 							</div>
 							{#each Object.entries(response.response) as field (field[0])}
@@ -313,3 +381,5 @@
 		</div>
 	</div>
 </div>
+
+<Toaster />
