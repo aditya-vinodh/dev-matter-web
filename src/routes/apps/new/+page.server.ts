@@ -29,8 +29,6 @@ export const actions = {
 
 		const data = await res.json();
 		if (!res.ok) {
-			console.log(data);
-			console.log(data.error);
 			return fail(res.status, data.message);
 		}
 

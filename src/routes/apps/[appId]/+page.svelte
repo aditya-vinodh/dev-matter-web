@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Dialog } from 'bits-ui';
 	import Header from '$lib/ui/Header.svelte';
 	import Link from '@lucide/svelte/icons/link';
 	import KeyRound from '@lucide/svelte/icons/key-round';
@@ -13,11 +12,14 @@
 	import RotateCcwKey from '@lucide/svelte/icons/rotate-ccw-key';
 	import Copy from '@lucide/svelte/icons/copy';
 	import Check from '@lucide/svelte/icons/check';
-	import { DropdownMenu } from 'bits-ui';
+	import { DropdownMenu, Dialog } from 'bits-ui';
 	import type { PageProps } from './$types';
 	import { enhance } from '$app/forms';
 
 	let { data }: PageProps = $props();
+
+	let editAppDialog = $state(false);
+	let app = $state(data.app);
 
 	let secretKeys = $state(data.app.secretKeys);
 
@@ -38,21 +40,90 @@
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">
 				<a href="/">Apps</a>
 				<ChevronRight size={16} class="stroke-zinc-500" />
-				<a href={`/apps/${data.app.id}`}>{data.app.name}</a>
+				<a href={`/apps/${app.id}`}>{app.name}</a>
 			</div>
-			<h1 class="pb-2 text-3xl font-semibold tracking-tight">{data.app.name}</h1>
+			<h1 class="pb-2 text-3xl font-semibold tracking-tight">{app.name}</h1>
 			<a
-				href={data.app.url}
+				href={app.url}
 				target="_blank"
 				class="flex items-center gap-2 text-sm font-medium text-zinc-500"
-				><Link size={14} class="stroke-zinc-500" />{data.app.url}</a
+				><Link size={14} class="stroke-zinc-500" />{app.url}</a
 			>
 		</div>
 		<div>
-			<button
-				class="flex items-center gap-2 rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
-				><Pencil size={16} class="stroke-zinc-700" />Edit</button
-			>
+			<Dialog.Root bind:open={editAppDialog}>
+				<Dialog.Trigger
+					class="flex items-center gap-2 rounded-xl border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+				>
+					<Pencil size={16} class="stroke-zinc-700" />Edit
+				</Dialog.Trigger>
+				<Dialog.Portal>
+					<Dialog.Overlay
+						class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/30"
+					/>
+					<Dialog.Content
+						class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white shadow-xl outline-hidden sm:max-w-[490px] md:w-full"
+					>
+						<div class="p-5">
+							<h3 class="font-medium">Edit app</h3>
+						</div>
+						<div>
+							<form
+								action="/apps/{data.app.id}?/update"
+								method="POST"
+								use:enhance={() => {
+									return async (event) => {
+										if (event.result.type === 'success') {
+											editAppDialog = false;
+											app.name = event.result.data.data.name;
+											app.url = event.result.data.data.url;
+										}
+									};
+								}}
+								class="flex flex-col gap-6"
+							>
+								<div class="flex flex-col gap-2 px-5">
+									<label for="name" class="text-sm font-medium">Name</label>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										value={app.name}
+										required
+										class="w-full appearance-none rounded-md border border-zinc-300 focus-visible:border-blue-600"
+									/>
+								</div>
+								<div class="flex flex-col gap-2 px-5">
+									<label for="url" class="text-sm font-medium">URL</label>
+									<input
+										type="url"
+										id="url"
+										name="url"
+										value={app.url}
+										required
+										class="w-full appearance-none rounded-md border border-zinc-300 focus-visible:border-blue-600"
+									/>
+								</div>
+								<div
+									class="mt-4 flex items-center justify-end gap-3 rounded-b-xl bg-zinc-50 p-5 py-3"
+								>
+									<button
+										onclick={() => (editAppDialog = false)}
+										type="button"
+										class="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+										>Cancel</button
+									>
+									<button
+										type="submit"
+										class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-600/90"
+										>Update</button
+									>
+								</div>
+							</form>
+						</div>
+					</Dialog.Content>
+				</Dialog.Portal>
+			</Dialog.Root>
 		</div>
 	</div>
 	<div class="mx-auto mt-10 w-full max-w-5xl pb-10">

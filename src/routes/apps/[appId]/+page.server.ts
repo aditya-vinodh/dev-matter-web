@@ -1,5 +1,5 @@
 import { env } from '$env/dynamic/private';
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
 export async function load(event) {
 	const appId = event.params.appId;
@@ -18,3 +18,40 @@ export async function load(event) {
 
 	return { app: data };
 }
+
+export const actions = {
+	update: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+
+		const formData = await event.request.formData();
+		const name = formData.get('name');
+		const url = formData.get('url');
+
+		const appId = event.params.appId;
+
+		const res = await event.fetch(`${env.API_URL}/apps/${appId}`, {
+			method: 'PUT',
+			headers: {
+				Authorization: `Bearer ${event.cookies.get('session')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ name, url })
+		});
+
+		const data = await res.json();
+		console.log(data.error);
+		if (!res.ok) {
+			return fail(res.status, { error: 'failed to update app' });
+		}
+
+		return {
+			success: true,
+			data: {
+				name,
+				url
+			}
+		};
+	}
+};

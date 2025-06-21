@@ -24,9 +24,10 @@
 				</p>
 				<p class="leading-loose">
 					The forms feature provides a simple API to help you collect submissions from your apps.
-					Unlike other form builders like Tally, Typeform, or Google forms, we enable you to build
-					fully custom forms that integrate seamlessly with your existing infrastructure. You are in
-					full control of the tech stack, UI, validations, and any other logic you need.
+					This isn't a form builder like Tally, Typeform, or Google forms. Instead we offer a
+					backend that enables you to build fully custom forms that integrate seamlessly with your
+					existing infrastructure. You are in full control of the tech stack, UI, validations, and
+					any other logic you need.
 				</p>
 				<p class="leading-loose">
 					All we provide is an API to receive submission data to view and analyze later. However, we
