@@ -53,5 +53,27 @@ export const actions = {
 				url
 			}
 		};
+	},
+	delete: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+
+		const appId = event.params.appId;
+
+		const res = await event.fetch(`${env.API_URL}/apps/${appId}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${event.cookies.get('session')}`
+			}
+		});
+
+		const data = await res.json();
+		console.log(data);
+		if (!res.ok) {
+			return fail(res.status, { error: 'failed to delete app' });
+		}
+
+		return redirect(301, '/');
 	}
 };
