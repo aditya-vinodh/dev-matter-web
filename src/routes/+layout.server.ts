@@ -1,6 +1,11 @@
 import type { LayoutServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
-export const load: LayoutServerLoad = ({ locals }) => {
+export const load: LayoutServerLoad = ({ locals, url }) => {
 	const { user } = locals;
+
+	if (user && !user?.emailVerified && url.pathname !== '/verify-email') {
+		return redirect(301, '/verify-email');
+	}
 	return { user };
 };

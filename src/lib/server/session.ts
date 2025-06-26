@@ -47,4 +47,11 @@ export interface Session {
 	userId: number;
 }
 
+export interface User {
+	id: number;
+	email: string;
+	name: string;
+	emailVerified: boolean;
+}
+
 type SessionValidationResult = { session: Session; user: User } | { session: null; user: null };

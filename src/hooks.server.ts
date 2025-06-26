@@ -5,7 +5,7 @@ import {
 } from '$lib/server/session';
 import { sequence } from '@sveltejs/kit/hooks';
 
-import type { Handle } from '@sveltejs/kit';
+import { type Handle } from '@sveltejs/kit';
 
 const authHandle: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get('session') ?? null;
@@ -17,7 +17,6 @@ const authHandle: Handle = async ({ event, resolve }) => {
 
 	const { session, user } = await validateSessionToken(event, token);
 	if (session !== null) {
-		console.log(session);
 		setSessionTokenCookie(event, token, session.expiresAt);
 	} else {
 		deleteSessionTokenCookie(event);

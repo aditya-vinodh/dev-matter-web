@@ -55,13 +55,6 @@
 			<div>
 				<div class="flex items-center justify-between">
 					<label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
-					<div class="text-sm">
-						<a
-							href="/forgot-password"
-							class="font-medium text-blue-600 transition hover:text-blue-600/90"
-							>Forgot password?</a
-						>
-					</div>
 				</div>
 				<div class="mt-2">
 					<input

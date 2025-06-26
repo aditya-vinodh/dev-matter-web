@@ -399,13 +399,23 @@
 									</AlertDialog.Root>
 								</div>
 							</div>
-							{#each Object.entries(response.response) as field (field[0])}
+							<!-- {#each Object.entries(response.response) as field (field[0])}
 								<div>
 									<p class="mb-1 text-xs font-medium text-zinc-500">
 										{version.fields.find((_field) => _field.id === field[0]).label}
 									</p>
 									<p class="py-0.5 text-sm">{field[1]}</p>
 								</div>
+							{/each} -->
+							{#each version.fields as field (field.id)}
+								{#if response.response[field.id]}
+									<div>
+										<p class="mb-1 text-xs font-medium text-zinc-500">
+											{field.label}
+										</p>
+										<p class="py-0.5 text-sm">{response.response[field.id]}</p>
+									</div>
+								{/if}
 							{/each}
 						</div>
 					{/each}

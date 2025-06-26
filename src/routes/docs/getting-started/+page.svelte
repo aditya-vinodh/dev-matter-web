@@ -32,7 +32,7 @@
 				<p class="leading-loose">
 					All we provide is an API to receive submission data to view and analyze later. However, we
 					go a step further than traditional form APIs. Download our native mobile app to get
-					notified of submissions, and take action on them directly from your phone.
+					notified of submissions, and take actions directly from your phone.
 				</p>
 			</div>
 		</div>

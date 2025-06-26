@@ -24,7 +24,7 @@
 			Get notified instantly when a form is submitted.
 		</p>
 		<p class="font-medium tracking-tight text-zinc-500">
-			Receive push notifications in our clean mobile app
+			Receive push notifications in our clean mobile app.
 		</p>
 		<p class="font-medium tracking-tight text-zinc-500">
 			Perfect for contact forms, surveys, feedback and support requests.
