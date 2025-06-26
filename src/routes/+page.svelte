@@ -48,7 +48,9 @@
 			</div>
 		</div>
 		<div class="col-span-12 lg:col-span-4">
-			<div class="mx-auto h-72 w-52 border xl:h-96 xl:w-72"></div>
+			<div class="mx-auto h-72 w-52 xl:h-96 xl:w-72">
+				<img src="/screenshot.webp" alt="screenshot" class="w-full" />
+			</div>
 		</div>
 	</div>
 {:else}
