@@ -14,6 +14,7 @@
 
 	let { data }: PageProps = $props();
 	let formResponses = $state(data.form.responses);
+	let responseCount = $state(data.form.responseCount);
 
 	let formNameChanged = $state(false);
 
@@ -305,7 +306,7 @@
 					<h2 class="flex items-center gap-2 text-lg font-medium tracking-tight">
 						Responses <span
 							class="rounded-lg border border-blue-300 bg-blue-100 p-0.5 px-2 text-sm text-blue-900"
-							>{data.form.responseCount}</span
+							>{responseCount}</span
 						>
 					</h2>
 					<a
@@ -383,6 +384,7 @@
 																if (event.result.type === 'success') {
 																	toast.success('Response deleted!');
 																	formResponses = formResponses.filter((r) => response.id !== r.id);
+																	responseCount = responseCount - 1;
 																}
 															};
 														}}
