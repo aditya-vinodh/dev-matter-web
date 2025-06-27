@@ -46,6 +46,7 @@
 		"@lucide/svelte": "^0.513.0",
 		"bits-ui": "^2.5.0",
 		"clsx": "^2.1.1",
+		"posthog-js": "^1.255.1",
 		"svelte-sonner": "^1.0.5"
 	}
 }
