@@ -130,7 +130,7 @@
 				/>
 			</form>
 			<div class="flex items-center gap-2 text-sm font-medium text-zinc-500">
-				<span class="font-semibold text-green-600">POST</span>https://api.devmatter.com/forms/{data
+				<span class="font-semibold text-green-600">POST</span>https://api.devmatter.app/forms/{data
 					.form.id}
 			</div>
 		</div>
