@@ -49,8 +49,8 @@
 			</div>
 		</div>
 		<div class="col-span-12 lg:col-span-4">
-			<div class="mx-auto h-72 w-52 xl:h-96 xl:w-72">
-				<img src="/screenshot.webp" alt="screenshot" class="w-full" />
+			<div class="mx-auto w-52 xl:w-72">
+				<img src="/screenshot.webp" alt="screenshot" class="h-max w-max" />
 			</div>
 		</div>
 	</div>
@@ -90,14 +90,3 @@
 		{/if}
 	</div>
 {/if}
-
-<div
-	class="fixed bottom-0 left-1/2 mb-4 -translate-x-1/2 rounded-xl bg-zinc-800 px-4 py-2 text-sm text-white"
->
-	<div class="text-center">We're fully open source! No strings attached.</div>
-	<a
-		class="mx-auto mt-2 flex w-fit items-center justify-center gap-2 rounded-xl border border-zinc-300 bg-zinc-700 p-1"
-		target="_blank"
-		href="https://github.com/aditya-vinodh/dev-matter"><GitHub size={16} /> Star us on GitHub</a
-	>
-</div>
