@@ -107,8 +107,10 @@
 </script>
 
 <Header user={data.user} />
-<div class="pb-32">
-	<div class="mx-auto flex w-full max-w-5xl items-start justify-between pt-10">
+<div class="px-4 pb-32">
+	<div
+		class="mx-auto flex w-full max-w-5xl flex-col items-start justify-between gap-10 pt-10 lg:flex-row"
+	>
 		<div>
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">
 				<a href="/">Apps</a>
@@ -134,7 +136,7 @@
 					.form.id}
 			</div>
 		</div>
-		<div class="flex flex-col items-end gap-2">
+		<div class="flex flex-col items-start gap-2 lg:items-end">
 			<p class="flex items-center gap-2 text-sm font-medium text-zinc-500">
 				{#if data.form.public}
 					<Globe size={16} class="stroke-zinc-500" /><span
@@ -203,8 +205,8 @@
 		</div>
 	</div>
 	<div class="mx-auto mt-10 w-full max-w-5xl">
-		<div class="grid w-full grid-cols-12 gap-4">
-			<div class="col-span-3">
+		<div class="flex w-full grid-cols-12 flex-col gap-20 md:grid md:gap-4">
+			<div class="md:col-span-3">
 				<h2 class="mb-3 text-lg font-medium tracking-tight">Schema</h2>
 
 				<form
@@ -301,7 +303,7 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-span-9">
+			<div class="md:col-span-9">
 				<div class="mb-3 flex items-center justify-between">
 					<h2 class="flex items-center gap-2 text-lg font-medium tracking-tight">
 						Responses <span

@@ -8,7 +8,7 @@
 
 <Header user={data.user} />
 
-<div class="mx-auto w-full max-w-sm pt-10 pb-32">
+<div class="mx-auto w-full max-w-sm px-4 pt-10 pb-32">
 	<h1 class="pb-10 text-3xl font-semibold tracking-tight">Create app</h1>
 	<form method="POST" use:enhance class="flex flex-col gap-6">
 		<div class="flex flex-col gap-2">

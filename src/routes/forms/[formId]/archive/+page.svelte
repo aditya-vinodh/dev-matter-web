@@ -26,7 +26,7 @@
 </script>
 
 <Header user={data.user} />
-<div class="pb-32">
+<div class="px-4 pb-32">
 	<div class="mx-auto flex w-full max-w-5xl items-start justify-between pt-10">
 		<div>
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">

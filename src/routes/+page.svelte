@@ -55,7 +55,7 @@
 		</div>
 	</div>
 {:else}
-	<div class="mx-auto w-full max-w-5xl pt-10 pb-32">
+	<div class="mx-auto w-full max-w-5xl px-4 pt-10 pb-32">
 		<div class="flex items-center justify-between">
 			<h1 class="text-3xl font-semibold tracking-tight">Apps</h1>
 			<a
