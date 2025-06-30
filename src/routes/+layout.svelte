@@ -14,7 +14,8 @@
 		<p>
 			Proudly open source! Star us on <a
 				class="underline"
-				href="https://github.com/adityavinodh/dev-matter">GitHub</a
+				target="_blank"
+				href="https://github.com/aditya-vinodh/dev-matter">GitHub</a
 			>
 		</p>
 	</div>

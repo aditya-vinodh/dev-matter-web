@@ -24,7 +24,7 @@ export const actions = {
 			return fail(res.status, data);
 		}
 
-		return redirect(301, '/');
+		return redirect(303, '/');
 	},
 	resend: async (event) => {
 		if (!event.locals.session) {

@@ -74,6 +74,6 @@ export const actions = {
 			return fail(res.status, { error: 'failed to delete app' });
 		}
 
-		return redirect(301, '/');
+		return redirect(303, '/');
 	}
 };

@@ -28,6 +28,6 @@ export const actions = {
 			maxAge: 60 * 60 * 24 // 24 hours
 		});
 
-		return redirect(301, '/forgot-password/verify');
+		return redirect(303, '/forgot-password/verify');
 	}
 };

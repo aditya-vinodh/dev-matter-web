@@ -155,6 +155,6 @@ export const actions = {
 			return fail(res.status, data.error);
 		}
 
-		return redirect(301, '/');
+		return redirect(303, '/');
 	}
 };
