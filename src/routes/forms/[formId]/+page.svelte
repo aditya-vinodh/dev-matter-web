@@ -107,9 +107,9 @@
 </script>
 
 <Header user={data.user} />
-<div class="px-4 pb-32">
+<div class="pb-32">
 	<div
-		class="mx-auto flex w-full max-w-5xl flex-col items-start justify-between gap-10 pt-10 lg:flex-row"
+		class="mx-auto flex w-full max-w-5xl flex-col items-start justify-between gap-10 px-4 pt-10 lg:flex-row"
 	>
 		<div>
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">
@@ -204,7 +204,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="mx-auto mt-10 w-full max-w-5xl">
+	<div class="mx-auto mt-10 w-full max-w-5xl px-4">
 		<div class="flex w-full grid-cols-12 flex-col gap-20 md:grid md:gap-4">
 			<div class="md:col-span-3">
 				<h2 class="mb-3 text-lg font-medium tracking-tight">Schema</h2>

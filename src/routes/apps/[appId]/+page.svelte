@@ -36,8 +36,8 @@
 </script>
 
 <Header user={data.user} />
-<div class="px-4 pb-32">
-	<div class="mx-auto flex w-full max-w-5xl items-center justify-between pt-10">
+<div class="pb-32">
+	<div class="mx-auto flex w-full max-w-5xl items-center justify-between px-4 pt-10">
 		<div>
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">
 				<a href="/">Apps</a>
@@ -174,7 +174,7 @@
 			</AlertDialog.Root>
 		</div>
 	</div>
-	<div class="mx-auto mt-10 w-full max-w-5xl pb-10">
+	<div class="mx-auto mt-10 w-full max-w-5xl px-4 pb-10">
 		<div class="flex items-center justify-between border-b border-zinc-300 pb-4">
 			<h2 class="text-lg font-medium tracking-tight">Forms</h2>
 			<form action="/forms/new?appId={data.app.id}" method="POST" use:enhance>
@@ -206,7 +206,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="mx-auto mt-10 w-full max-w-5xl pb-10">
+	<div class="mx-auto mt-10 w-full max-w-5xl px-4 pb-10">
 		<div class="flex items-center justify-between border-b border-zinc-300 pb-4">
 			<h2 class="text-lg font-medium tracking-tight">Secret Keys</h2>
 			<Dialog.Root bind:open={createSecretKeyDialog}>
