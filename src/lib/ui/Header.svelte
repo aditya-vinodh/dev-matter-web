@@ -58,7 +58,7 @@
 								<a
 									href="/account-settings"
 									class="flex w-full items-center gap-2 rounded-lg p-1 transition hover:bg-zinc-100"
-									><UserCog size={16} class="stroke-zinc-700" /> Account Settings</a
+									><UserCog size={16} class="stroke-zinc-700" /> Account settings</a
 								>
 							{/snippet}
 						</DropdownMenu.Item>
