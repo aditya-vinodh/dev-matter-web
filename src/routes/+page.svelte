@@ -12,6 +12,10 @@
 
 <svelte:head>
 	<title>DevMatter</title>
+	<meta
+		name="description"
+		content="DevMatter is a better way to manage your apps. A form API built for developers with a mobile app for real-time notifications."
+	/>
 </svelte:head>
 
 <Header user={data.user} />
@@ -44,7 +48,7 @@
 				<a
 					href="/docs"
 					class="flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition hover:bg-zinc-100 xl:text-base"
-					>Learn more <ArrowRight size={16} /></a
+					>Check out the docs <ArrowRight size={16} /></a
 				>
 			</div>
 		</div>
