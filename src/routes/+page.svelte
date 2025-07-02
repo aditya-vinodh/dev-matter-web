@@ -49,8 +49,12 @@
 			</div>
 		</div>
 		<div class="col-span-12 lg:col-span-4">
-			<div class="mx-auto w-52 xl:w-72">
-				<img src="/screenshot.webp" alt="screenshot" class="w-max" />
+			<div class="mx-auto">
+				<enhanced:img
+					src="../lib/images/screenshot.webp?w=540"
+					alt="screenshot"
+					class="mx-auto mt-10 w-72 lg:mt-0 lg:w-full"
+				/>
 			</div>
 		</div>
 	</div>

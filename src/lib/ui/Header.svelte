@@ -27,7 +27,7 @@
 	class="mx-auto flex w-full max-w-xl items-center justify-between px-4 py-4 text-xs font-medium text-zinc-700 lg:max-w-3xl lg:text-sm xl:max-w-5xl"
 >
 	<a href="/" class="flex items-center gap-2 tracking-tight"
-		><img alt="logo" class="size-10" src="/devmatter-rounded.png" />
+		><enhanced:img alt="logo" class="size-10" src="../images/devmatter-rounded.png?w=100" />
 		<span class="block sm:hidden lg:block">DevMatter</span></a
 	>
 	<div class="hidden items-center gap-10 sm:flex">
