@@ -50,7 +50,7 @@
 		</div>
 		<div class="col-span-12 lg:col-span-4">
 			<div class="mx-auto w-52 xl:w-72">
-				<img src="/screenshot.webp" alt="screenshot" class="h-max w-max" />
+				<img src="/screenshot.webp" alt="screenshot" class="w-max" />
 			</div>
 		</div>
 	</div>

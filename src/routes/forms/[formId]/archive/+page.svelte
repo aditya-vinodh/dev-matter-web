@@ -26,8 +26,8 @@
 </script>
 
 <Header user={data.user} />
-<div class="px-4 pb-32">
-	<div class="mx-auto flex w-full max-w-5xl items-start justify-between pt-10">
+<div class="pb-32">
+	<div class="mx-auto flex w-full max-w-5xl items-start justify-between px-4 pt-10">
 		<div>
 			<div class="flex items-center gap-4 pb-2 text-sm font-medium text-zinc-500">
 				<a href="/">Apps</a>
@@ -41,7 +41,7 @@
 			<h1 class="pb-2 text-3xl font-semibold tracking-tight">Archived Responses</h1>
 		</div>
 	</div>
-	<div class="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-4">
+	<div class="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-4 px-4">
 		{#each formResponses as response (response.id)}
 			{@const version = data.form.versions.find((version) => version.id === response.formVersionId)}
 			<div class="flex flex-col gap-2 rounded-sm border border-zinc-300 bg-zinc-100 p-1">

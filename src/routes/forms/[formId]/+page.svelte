@@ -10,7 +10,7 @@
 	import type { PageProps } from './$types';
 	import { Toaster, toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
-	import { AlertDialog } from 'bits-ui';
+	import { AlertDialog, Toggle } from 'bits-ui';
 
 	let { data }: PageProps = $props();
 	let formResponses = $state(data.form.responses);
@@ -28,6 +28,13 @@
 	});
 
 	let nameForm: HTMLFormElement | undefined = $state();
+
+	let redirectOnSubmitForm: HTMLFormElement | undefined = $state();
+	let redirectUrlFormDirty = $state(false);
+
+	let redirectOnSubmit = $state(data.form.redirectOnSubmit);
+	let successUrl = $state(data.form.successUrl);
+	let failureUrl = $state(data.form.failureUrl);
 
 	function isFormInvalid(fields: { id: string }[]) {
 		const set = new Set();
@@ -103,6 +110,12 @@
 			hour12: true
 		});
 		return intlObj.format(normalizedDateObject);
+	}
+
+	async function updateRedirectOnSubmit() {
+		if (redirectOnSubmitForm) {
+			redirectOnSubmitForm.submit();
+		}
 	}
 </script>
 
@@ -302,6 +315,75 @@
 						{/if}
 					</div>
 				</form>
+				<h2 class="mt-10 mb-3 flex items-center gap-2 text-lg font-medium tracking-tight">
+					Response Handling
+				</h2>
+				<Toggle.Root
+					onPressedChange={updateRedirectOnSubmit}
+					bind:pressed={redirectOnSubmit}
+					aria-label="Toggle redirect on submit"
+					class="flex items-center gap-2 rounded-xl bg-zinc-100 px-1.5 py-1 text-sm"
+				>
+					<div class="rounded-lg transition {redirectOnSubmit ? '' : 'bg-zinc-200'} p-1">JSON</div>
+					<div class="rounded-lg p-1 transition {redirectOnSubmit ? 'bg-zinc-200' : ''}">
+						Redirect
+					</div>
+				</Toggle.Root>
+				<form
+					use:enhance
+					bind:this={redirectOnSubmitForm}
+					method="POST"
+					action="/forms/{data.form.id}?/updateRedirectOnSubmit"
+					class="hidden"
+				>
+					<input type="text" name="redirectOnSubmit" value={redirectOnSubmit ? 'false' : 'true'} />
+				</form>
+
+				{#if redirectOnSubmit}
+					<form
+						use:enhance={() => {
+							return async (event) => {
+								if (event.result.type === 'success') {
+									redirectUrlFormDirty = false;
+								}
+							};
+						}}
+						method="POST"
+						action="/forms/{data.form.id}?/updateRedirectUrls"
+						class="mt-2 flex flex-col gap-4"
+					>
+						<div>
+							<label for="success-url" class="text-xs font-medium">Success URL</label>
+							<input
+								type="text"
+								id="success-url"
+								name="successUrl"
+								value={data.form.successUrl}
+								oninput={() => (redirectUrlFormDirty = true)}
+								class="w-full rounded-sm border border-zinc-300 p-0.5 text-sm placeholder:text-zinc-400 focus-visible:border-blue-600"
+								placeholder="https://yourapp.com/form/success"
+							/>
+						</div>
+						<div>
+							<label for="failure-url" class="text-xs font-medium">Failure URL</label>
+							<input
+								type="text"
+								id="failure-url"
+								name="failureUrl"
+								value={data.form.failureUrl}
+								oninput={() => (redirectUrlFormDirty = true)}
+								class="w-full rounded-sm border border-zinc-300 p-0.5 text-sm placeholder:text-zinc-400 focus-visible:border-blue-600"
+								placeholder="https://yourapp.com/form/failure"
+							/>
+						</div>
+						{#if redirectUrlFormDirty}
+							<button
+								class="w-fit rounded-lg border border-transparent bg-blue-600 px-2 py-1 text-xs font-medium text-white transition hover:bg-blue-600/90 disabled:bg-zinc-300"
+								>Update redirect URLs</button
+							>
+						{/if}
+					</form>
+				{/if}
 			</div>
 			<div class="md:col-span-9">
 				<div class="mb-3 flex items-center justify-between">

@@ -156,5 +156,62 @@ export const actions = {
 		}
 
 		return redirect(303, '/');
+	},
+	updateRedirectOnSubmit: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+
+		const formData = await event.request.formData();
+		const redirectOnSubmit = formData.get('redirectOnSubmit');
+		const formId = event.params.formId;
+		const res = await event.fetch(`${env.API_URL}/forms/${formId}`, {
+			method: 'PATCH',
+			headers: {
+				Authorization: `Bearer ${event.cookies.get('session')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				redirectOnSubmit: redirectOnSubmit === 'true' ? true : false
+			})
+		});
+
+		const data = await res.json();
+		console.log(data);
+		if (!res.ok) {
+			return fail(res.status, data.error);
+		}
+
+		return { success: true };
+	},
+	updateRedirectUrls: async (event) => {
+		if (!event.locals.session) {
+			return fail(401, { error: 'unauthorized' });
+		}
+
+		const formData = await event.request.formData();
+		const successUrl = formData.get('successUrl');
+		const failureUrl = formData.get('failureUrl');
+
+		const formId = event.params.formId;
+		const res = await event.fetch(`${env.API_URL}/forms/${formId}`, {
+			method: 'PATCH',
+			headers: {
+				Authorization: `Bearer ${event.cookies.get('session')}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				successUrl: successUrl,
+				failureUrl: failureUrl
+			})
+		});
+
+		const data = await res.json();
+		console.log(data);
+		if (!res.ok) {
+			return fail(res.status, data.error);
+		}
+
+		return { success: true };
 	}
 };
