@@ -46,6 +46,10 @@
 
 <Header user={data.user} />
 
+<svelte:head>
+	<title>Contact | DevMatter</title>
+</svelte:head>
+
 <div class="mx-auto w-full max-w-xl px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<div class="grid w-full grid-cols-2 gap-6">
 		<div class="col-span-2 sm:col-span-1">

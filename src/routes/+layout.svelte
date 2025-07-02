@@ -6,7 +6,7 @@
 
 {@render children()}
 
-<div class="mt-20 flex border-t border-zinc-300 py-8">
+<footer class="mt-20 flex border-t border-zinc-300 py-8">
 	<div
 		class="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-2 px-4 text-sm text-zinc-500 md:flex-row"
 	>
@@ -19,4 +19,4 @@
 			>
 		</p>
 	</div>
-</div>
+</footer>

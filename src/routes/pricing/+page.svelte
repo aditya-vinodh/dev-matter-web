@@ -8,6 +8,10 @@
 
 <Header user={data.user} />
 
+<svelte:head>
+	<title>Pricing | DevMatter</title>
+</svelte:head>
+
 <div class="mx-auto w-full max-w-xl px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<p class="mb-3 text-center text-3xl font-semibold tracking-tight text-balance">
 		The best way to collect form submissions; made for developers

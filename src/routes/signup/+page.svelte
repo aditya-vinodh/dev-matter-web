@@ -5,6 +5,10 @@
 	let { form }: PageProps = $props();
 </script>
 
+<svelte:head>
+	<title>Sign Up | DevMatter</title>
+</svelte:head>
+
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<a href="/" class="mx-auto" aria-label="logo">

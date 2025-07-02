@@ -7,6 +7,10 @@
 
 <Header user={data.user} />
 
+<svelte:head>
+	<title>Features | DevMatter</title>
+</svelte:head>
+
 <div class="mx-auto w-full max-w-xl px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<p class="mb-10 text-3xl font-semibold tracking-tight text-balance">
 		A suite of tools for developers to manage their apps

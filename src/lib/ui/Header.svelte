@@ -22,7 +22,7 @@
 	});
 </script>
 
-<div
+<header
 	id="header"
 	class="mx-auto flex w-full max-w-xl items-center justify-between px-4 py-4 text-xs font-medium text-zinc-700 lg:max-w-3xl lg:text-sm xl:max-w-5xl"
 >
@@ -30,7 +30,7 @@
 		><enhanced:img alt="logo" class="size-10" src="../images/devmatter-rounded.png?w=100" />
 		<span class="block sm:hidden lg:block">DevMatter</span></a
 	>
-	<div class="hidden items-center gap-10 sm:flex">
+	<nav class="hidden items-center gap-10 sm:flex">
 		{#if user}
 			<a href="/docs">Docs</a>
 			<a href="/support">Support</a>
@@ -38,10 +38,11 @@
 		{:else}
 			<a href="/features">Features</a>
 			<a href="/docs">Docs</a>
+			<a href="/blog">Blog</a>
 			<a href="/pricing">Pricing</a>
 			<a href="/contact">Contact</a>
 		{/if}
-	</div>
+	</nav>
 	<div class="flex items-center gap-4">
 		{#if user}
 			<DropdownMenu.Root>
@@ -90,7 +91,7 @@
 			</div>
 		{/if}
 	</div>
-</div>
+</header>
 {#if user}
 	<div class="w-full border-b border-zinc-200"></div>
 {/if}
@@ -99,7 +100,11 @@
 	<div transition:fade class="absolute inset-0 z-50 h-screen w-screen bg-white/70 backdrop-blur-xl">
 		<div class="flex items-center justify-between px-4 py-4">
 			<a href="/" class="flex items-center gap-2 tracking-tight"
-				><img alt="logo" class="size-10 rounded-xl shadow-sm" src="/devmatter-rounded.png" />
+				><enhanced:img
+					alt="logo"
+					class="size-10 rounded-xl shadow-sm"
+					src="../images/devmatter-rounded.png?w=100"
+				/>
 				<span class="block text-xs font-medium tracking-tight text-zinc-700 sm:hidden lg:block"
 					>DevMatter</span
 				></a
@@ -110,12 +115,13 @@
 				aria-label="Close menu"><X size={16} /></button
 			>
 		</div>
-		<div class="mt-10 flex flex-col gap-6 px-6">
+		<nav class="mt-10 flex flex-col gap-6 px-6">
 			<a href="/features" class="text-2xl font-medium text-zinc-600">Features</a>
 			<a href="/docs" class="text-2xl font-medium text-zinc-600">Docs</a>
+			<a href="/blog" class="text-2xl font-medium text-zinc-600">Blog</a>
 			<a href="/pricing" class="text-2xl font-medium text-zinc-600">Pricing</a>
 			<a href="/contact" class="text-2xl font-medium text-zinc-600">Contact</a>
-		</div>
+		</nav>
 		<div class="mt-20 flex flex-col gap-6 border-t border-zinc-300 p-4 px-6">
 			<a href="/login" class="text-2xl font-medium text-zinc-600">Log in</a>
 		</div>

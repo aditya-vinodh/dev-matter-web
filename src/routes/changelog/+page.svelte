@@ -17,8 +17,12 @@
 
 <Header user={data.user} />
 
+<svelte:head>
+	<title>Changelog | DevMatter</title>
+</svelte:head>
+
 <div class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
-	<h1 class="mb-2 text-3xl font-semibold">Changelog</h1>
+	<h1 class="mb-2 text-3xl font-semibold tracking-tight">Changelog</h1>
 
 	<div class="flex flex-col">
 		{#each versions as version (version.tag)}

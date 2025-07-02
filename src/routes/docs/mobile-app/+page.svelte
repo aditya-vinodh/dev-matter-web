@@ -9,6 +9,10 @@
 
 <Header user={data.user} />
 
+<svelte:head>
+	<title>Mobile App | DevMatter Docs</title>
+</svelte:head>
+
 <div class="mx-auto w-full max-w-xl pt-10 pb-32 lg:max-w-3xl xl:max-w-5xl">
 	<div class="grid grid-cols-10">
 		<div class="hidden flex-col gap-6 text-sm lg:col-span-2 lg:flex">
