@@ -42,7 +42,7 @@
 			</div>
 		</div>
 
-		<enhanced:img src={Thumbnail} class="rounded-xl" />
+		<enhanced:img src={Thumbnail} class="rounded-xl" alt="Thumbnail" />
 
 		<div class="flex flex-col gap-8 text-zinc-700 *:leading-loose">
 			<p>
