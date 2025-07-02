@@ -17,7 +17,7 @@
 		<a href="/" class="mx-auto" aria-label="logo">
 			<enhanced:img
 				class="mx-auto size-10"
-				src="../../lib/images/devmatter-rounded.png"
+				src="../../../lib/images/devmatter-rounded.png"
 				alt="logo"
 			/>
 		</a>
