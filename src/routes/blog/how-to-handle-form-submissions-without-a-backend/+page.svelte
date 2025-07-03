@@ -51,10 +51,9 @@
 
 		<enhanced:img
 			fetchpriority="high"
-			src="../../../lib/images/blog/how-to-handle-form-submissions-without-a-backend/thumbnail.png?w=640"
+			src="../../../lib/images/blog/how-to-handle-form-submissions-without-a-backend/thumbnail.png?w=1000"
 			class="rounded-xl"
 			alt="Thumbnail"
-			sizes="min(640px, 100vw)"
 		/>
 
 		<div class="flex flex-col gap-8 text-zinc-700 *:leading-loose">

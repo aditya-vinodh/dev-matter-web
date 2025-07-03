@@ -43,10 +43,9 @@
 		</div>
 
 		<enhanced:img
-			src="../../../lib/images/blog/welcome-to-devmatter/thumbnail.png?w=640"
+			src="../../../lib/images/blog/welcome-to-devmatter/thumbnail.png?w=1000"
 			class="rounded-xl"
 			alt="Thumbnail"
-			sizes="min(640px, 100vw)"
 		/>
 
 		<div class="flex flex-col gap-8 text-zinc-700 *:leading-loose">

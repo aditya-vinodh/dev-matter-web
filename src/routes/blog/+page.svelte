@@ -3,6 +3,18 @@
 
 	const blogs = [
 		{
+			slug: 'best-way-to-build-forms-with-tailwind-and-a-form-api',
+			date: 'Jul 4, 2024',
+			title: 'Best Way to Build Forms with Tailwind and a Form API',
+			description:
+				'Learn the best way to build custom forms using Tailwind CSS and a form API backend. Easily style professional forms and handle submissions with DevMatter — get real-time push notifications and manage responses on the go.',
+			author: {
+				name: 'Aditya',
+				picture: adityaPicture,
+				title: 'Founder'
+			}
+		},
+		{
 			slug: 'how-to-handle-form-submissions-without-a-backend',
 			date: 'Jul 3, 2024',
 			title: 'How to Handle Form Submissions Without a Backend',
