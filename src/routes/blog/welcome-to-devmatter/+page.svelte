@@ -16,6 +16,7 @@
 		content="A suite of tools for developers to manage their projects. The first feature: a forms API with a nice mobile app!"
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
+	<meta name="twitter:image" content={Thumbnail.img.src} />
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-2xl">

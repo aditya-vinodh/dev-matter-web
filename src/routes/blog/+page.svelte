@@ -3,6 +3,18 @@
 
 	const blogs = [
 		{
+			slug: 'how-to-handle-form-submissions-without-a-backend',
+			date: 'Jul 3, 2024',
+			title: 'How to Handle Form Submissions Without a Backend',
+			description:
+				'Learn about the different options for handling form submissions without managing your own backend.',
+			author: {
+				name: 'Aditya',
+				picture: Aditya,
+				title: 'Founder'
+			}
+		},
+		{
 			slug: 'welcome-to-devmatter',
 			date: 'Jul 2, 2024',
 			title: 'Welcome to DevMatter',
