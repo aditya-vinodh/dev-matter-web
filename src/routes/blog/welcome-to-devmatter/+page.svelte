@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Thumbnail from '$lib/images/blog/welcome-to-devmatter/thumbnail.png?enhanced';
-	import Aditya from '$lib/images/aditya.jpeg?enhanced';
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 </script>
 
@@ -31,7 +30,7 @@
 
 		<div class="flex items-center gap-4">
 			<enhanced:img
-				src={Aditya}
+				src="../../../lib/images/aditya.jpeg?w=100"
 				alt="Aditya"
 				width="42"
 				height="42"
@@ -43,7 +42,12 @@
 			</div>
 		</div>
 
-		<enhanced:img src={Thumbnail} class="rounded-xl" alt="Thumbnail" />
+		<enhanced:img
+			src="../../../lib/images/blog/welcome-to-devmatter/thumbnail.png?w=640"
+			class="rounded-xl"
+			alt="Thumbnail"
+			sizes="min(640px, 100vw)"
+		/>
 
 		<div class="flex flex-col gap-8 text-zinc-700 *:leading-loose">
 			<p>

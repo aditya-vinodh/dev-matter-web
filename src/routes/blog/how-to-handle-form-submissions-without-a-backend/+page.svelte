@@ -2,30 +2,9 @@
 	import Thumbnail from '$lib/images/blog/how-to-handle-form-submissions-without-a-backend/thumbnail.png?enhanced';
 	import FormDashboard from '$lib/images/blog/how-to-handle-form-submissions-without-a-backend/form-dashboard.png?enhanced';
 	import MobileScreenshot from '$lib/images/screenshot.webp?enhanced';
-	import Aditya from '$lib/images/aditya.jpeg?enhanced';
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
 
-	import { highlighter } from '$lib/index';
-
-	const exampleHTMLFormCode = `<form action="https://api.devmatter.app/forms/<your-form-id>" method="POST">
-  <input type="text" name="name" required />
-  <input type="email" name="email" required />
-  <button type="submit">Submit</button>
-</form>`;
-	const exampleHTMLFormHtml = highlighter.codeToHtml(exampleHTMLFormCode, {
-		lang: 'html',
-		theme: 'min-dark'
-	});
-
-	const exampleJavascriptFormCode = `fetch("https://api.devmatter.app/forms/<your-form-id>", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name: "Jane", email: "jane@example.com" }),
-});`;
-	const exampleJavascriptFormHtml = highlighter.codeToHtml(exampleJavascriptFormCode, {
-		lang: 'javascript',
-		theme: 'min-dark'
-	});
+	let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
@@ -57,10 +36,11 @@
 
 		<div class="flex items-center gap-4">
 			<enhanced:img
-				src={Aditya}
+				src="../../../lib/images/aditya.jpeg?w=100"
 				alt="Aditya"
 				width="42"
 				height="42"
+				fetchpriority="high"
 				class="aspect-square rounded-full object-cover"
 			/>
 			<div class="flex flex-col justify-between">
@@ -69,7 +49,13 @@
 			</div>
 		</div>
 
-		<enhanced:img src={Thumbnail} class="rounded-xl" alt="Thumbnail" />
+		<enhanced:img
+			fetchpriority="high"
+			src="../../../lib/images/blog/how-to-handle-form-submissions-without-a-backend/thumbnail.png?w=640"
+			class="rounded-xl"
+			alt="Thumbnail"
+			sizes="min(640px, 100vw)"
+		/>
 
 		<div class="flex flex-col gap-8 text-zinc-700 *:leading-loose">
 			<p>
@@ -157,7 +143,7 @@
 			<h4 class="font-medium text-zinc-900">Example:</h4>
 			<div class="overflow-auto rounded-lg bg-[#1f1f1f] px-2 py-1 text-sm">
 				<div class="inline-block min-w-full">
-					{@html exampleHTMLFormHtml}
+					{@html data.exampleHTMLFormHtml}
 				</div>
 			</div>
 
@@ -165,20 +151,26 @@
 
 			<div class="overflow-auto rounded-lg bg-[#1f1f1f] px-2 py-1 text-sm">
 				<div class="inline-block min-w-full">
-					{@html exampleJavascriptFormHtml}
+					{@html data.exampleJavascriptFormHtml}
 				</div>
 			</div>
 
 			<p>Once a user submits a form, you can view the responses from your dashboard</p>
 
-			<enhanced:img src={FormDashboard} alt="DevMatter form dashboard" />
+			<enhanced:img src={FormDashboard} alt="DevMatter form dashboard" loading="lazy" />
 
 			<p>
 				You can also download our mobile app to receive push notifications and view responses over
 				there.
 			</p>
 
-			<enhanced:img src={MobileScreenshot} alt="DevMatter mobile app" width="250" class="mx-auto" />
+			<enhanced:img
+				src={MobileScreenshot}
+				alt="DevMatter mobile app"
+				width="250"
+				class="mx-auto"
+				loading="lazy"
+			/>
 
 			<h2 class="text-xl font-medium text-zinc-900">📱 Get Started in Minutes</h2>
 

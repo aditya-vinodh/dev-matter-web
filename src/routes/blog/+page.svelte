@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Aditya from '../../lib/images/aditya.jpeg?enhanced';
+	const adityaPicture = '../../lib/images/aditya.jpeg?w=100';
 
 	const blogs = [
 		{
@@ -10,7 +10,7 @@
 				'Learn about the different options for handling form submissions without managing your own backend.',
 			author: {
 				name: 'Aditya',
-				picture: Aditya,
+				picture: adityaPicture,
 				title: 'Founder'
 			}
 		},
@@ -22,7 +22,7 @@
 				'A suite of tools for developers to manage their projects. The first feature: a forms API with a nice mobile app!',
 			author: {
 				name: 'Aditya',
-				picture: Aditya,
+				picture: adityaPicture,
 				title: 'Founder'
 			}
 		}
@@ -49,7 +49,7 @@
 					<p class="text-sm text-pretty text-zinc-500">{blog.description}</p>
 					<div class="flex items-center gap-4 pt-2">
 						<enhanced:img
-							src={blog.author.picture}
+							src="../../lib/images/aditya.jpeg?w=100"
 							alt="Aditya"
 							width="42"
 							height="42"
