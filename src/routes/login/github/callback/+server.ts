@@ -6,9 +6,8 @@ import { redirect, type RequestEvent } from '@sveltejs/kit';
 export async function GET(event: RequestEvent): Promise<Response> {
 	const code = event.url.searchParams.get('code');
 	const state = event.url.searchParams.get('state');
-	const storedState = event.cookies.get('google_oauth_state') ?? null;
-	const codeVerifier = event.cookies.get('google_code_verifier') ?? null;
-	if (code === null || state === null || storedState === null || codeVerifier === null) {
+	const storedState = event.cookies.get('github_oauth_state') ?? null;
+	if (code === null || state === null || storedState === null) {
 		return new Response(null, {
 			status: 400
 		});
@@ -19,14 +18,13 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		});
 	}
 
-	const res = await event.fetch(`${env.API_URL}/login/google`, {
+	const res = await event.fetch(`${env.API_URL}/login/github`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			code,
-			codeVerifier
+			code
 		})
 	});
 
