@@ -32,6 +32,18 @@
 	{/if}
 
 	<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+		<a
+			href="/login/google"
+			class="mb-5 flex w-full items-center justify-center gap-2 rounded-md border border-zinc-100 bg-zinc-50 px-4 py-2 text-sm font-medium transition hover:bg-zinc-100"
+			><img src="/google-logo.webp" width="16" alt="google logo" /> Log in with Google</a
+		>
+
+		<div class="mb-5 flex items-center justify-center">
+			<div class="grow border-t border-zinc-200"></div>
+			<div class="px-4 text-sm text-zinc-500">Or</div>
+			<div class="grow border-t border-zinc-200"></div>
+		</div>
+
 		<form class="space-y-6" action="" method="POST" use:enhance>
 			<div>
 				<label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
