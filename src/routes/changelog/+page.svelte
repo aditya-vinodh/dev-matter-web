@@ -6,6 +6,13 @@
 
 	const versions = [
 		{
+			tag: 'v0.2',
+			title: 'OAuth Sign-In',
+			description:
+				'Added support for sign-in using Google and GitHub for a frictionless experience.',
+			date: 'Jul 7, 2025'
+		},
+		{
 			tag: 'v0.1',
 			title: 'Initial Release',
 			description:

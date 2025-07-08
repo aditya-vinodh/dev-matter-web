@@ -26,7 +26,7 @@
 				href="/changelog"
 				class="flex w-fit items-center gap-4 rounded-full border border-zinc-300 px-2 py-1 text-xs xl:px-3 xl:py-1.5 xl:text-sm"
 			>
-				<span class="font-medium text-blue-600">Just shipped v0.1</span>
+				<span class="font-medium text-blue-600">Just shipped v0.2</span>
 				<span class="h-5 border border-r-0 border-zinc-300"></span>
 				<div class="flex items-center gap-2 text-zinc-700">
 					See what's new <ChevronRight size={16} class="stroke-zinc-700" />
@@ -59,6 +59,97 @@
 					alt="screenshot"
 					class="mx-auto mt-10 w-72 lg:mt-0 lg:w-full"
 				/>
+			</div>
+		</div>
+
+		<div class="col-span-12 mt-24">
+			<h2 class="mb-10 text-3xl font-semibold tracking-tight">Frequently Asked Questions</h2>
+			<div class="grid grid-cols-3 gap-8 gap-y-12">
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">What is DevMatter?</h3>
+					<p class="leading-loose text-zinc-600">
+						DevMatter is a developer-first form backend and submission dashboard. It lets you easily
+						create flexible forms, send data via API, view submissions, and get real-time mobile
+						notifications — all without relying on rigid tools like Google Forms.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">
+						How is DevMatter different from Google Forms or Typeform?
+					</h3>
+					<p class="leading-loose text-zinc-600">
+						DevMatter isn't a form builder like Google Forms or Typeform. DevMatter is designed for
+						developers who want control. You can fully customize the front-end, integrate it into
+						your product seamlessly, and send data via API — no locked-in UI or embedded branding.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Can I use my own frontend or framework?</h3>
+					<p class="leading-loose text-zinc-600">
+						Yes! DevMatter is frontend-agnostic. Whether you’re using React, Svelte, Vue, plain
+						HTML, or something else, you can build your form however you like and just POST the data
+						to our API.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">How do I view form submissions?</h3>
+					<p class="leading-loose text-zinc-600">
+						You get access to a clean, real-time dashboard where you can view and search through all
+						your form submissions. You can also export them if needed.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Will I get notified when someone submits a form?</h3>
+					<p class="leading-loose text-zinc-600">
+						Yes! You can enable real-time mobile push notifications with our mobile app to get
+						alerts when someone submits a form.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Is DevMatter free?</h3>
+					<p class="leading-loose text-zinc-600">
+						DevMatter has a generous free plan that should get you started. For higher limits and
+						features, consider our paid plans starting at $9/month.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Can I use DevMatter in production apps?</h3>
+					<p class="leading-loose text-zinc-600">
+						Absolutely. DevMatter is built to be reliable, secure, and production-ready from day
+						one.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Can I self-host it?</h3>
+					<p class="leading-loose text-zinc-600">
+						Yes, you can self-host DevMatter using Docker or by building it from source. You can
+						find instructions on how to do so in our <a href="/docs" class="underline"
+							>documentation</a
+						>.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">Is the API open-source?</h3>
+					<p class="leading-loose text-zinc-600">
+						Yes, the entire application, including the API, is open-source and available on
+						<a href="https://github.com/aditya-vinodh/dev-matter" class="underline">GitHub</a>.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">What kind of data can I collect?</h3>
+					<p class="leading-loose text-zinc-600">
+						You can collect any kind of structured form data — names, emails, messages, dropdowns,
+						checkboxes, file uploads, and more. We only care about the raw data type: string,
+						number, boolean, file.
+					</p>
+				</div>
+				<div class="col-span-3 lg:col-span-2 xl:col-span-1">
+					<h3 class="mb-3 font-medium">What happens to my data?</h3>
+					<p class="leading-loose text-zinc-600">
+						Your data is encrypted in transit using industry-standard encryption algorithms. It is
+						stored securely on our servers until it is deleted by you.
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>
