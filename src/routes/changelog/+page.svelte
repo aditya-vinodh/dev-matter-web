@@ -6,6 +6,13 @@
 
 	const versions = [
 		{
+			tag: 'v0.3',
+			title: 'Form redirects',
+			description:
+				'Added support for controlling submission response: JSON or Redirect. Users can set redirect URLs along with parameters.',
+			date: 'Jul 8, 2025'
+		},
+		{
 			tag: 'v0.2',
 			title: 'OAuth Sign-In',
 			description:
@@ -33,7 +40,7 @@
 
 	<div class="flex flex-col">
 		{#each versions as version (version.tag)}
-			<div class="grid grid-cols-12 border-y border-zinc-300 py-4">
+			<div class="grid grid-cols-12 border-t border-zinc-300 py-4">
 				<div
 					class="col-span-12 mb-6 flex items-center gap-3.5 pl-2 sm:col-span-2 sm:mb-0 sm:flex-col sm:justify-center sm:pl-0"
 				>
