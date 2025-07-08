@@ -3,6 +3,18 @@
 
 	const blogs = [
 		{
+			slug: 'why-developers-are-moving-away-from-google-forms-for-production-apps',
+			date: 'Jul 7, 2024',
+			title: 'Why Developers Are Moving Away from Google Forms for Production Apps',
+			description:
+				'Many developers are moving away from Google Forms for production apps. Learn why and explore better Google Forms alternatives built for developers with full backend control and flexibility.',
+			author: {
+				name: 'Aditya',
+				picture: adityaPicture,
+				title: 'Founder'
+			}
+		},
+		{
 			slug: 'best-way-to-build-forms-with-tailwind-and-a-form-api',
 			date: 'Jul 4, 2024',
 			title: 'Best Way to Build Forms with Tailwind and a Form API',
