@@ -11,6 +11,7 @@
 	import { Toaster, toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
 	import { AlertDialog, Toggle } from 'bits-ui';
+	import { onMount } from 'svelte';
 
 	let { data }: PageProps = $props();
 	let formResponses = $state(data.form.responses);
@@ -27,6 +28,17 @@
 		fields = getLatestVersion(data.form.versions).fields;
 	});
 
+	onMount(() => {
+		for (let i = 0; i < fields.length; i++) {
+			if (successUrl.includes(`@${fields[i].id}`)) {
+				successUrlInput.innerHTML = successUrl.replaceAll(
+					`@${fields[i].id}`,
+					`<span style="background-color: #f4f4f5; font-weight: 500; border-radius: 5px; padding-left: 0.5px; padding-right: 0.5px;">@${fields[i].id}</span>`
+				);
+			}
+		}
+	});
+
 	let nameForm: HTMLFormElement | undefined = $state();
 
 	let redirectOnSubmitForm: HTMLFormElement | undefined = $state();
@@ -35,6 +47,7 @@
 	let redirectOnSubmit = $state(data.form.redirectOnSubmit);
 	let successUrl = $state(data.form.successUrl);
 	let failureUrl = $state(data.form.failureUrl);
+	let successUrlInput: HTMLDivElement | undefined = $state();
 
 	function isFormInvalid(fields: { id: string }[]) {
 		const set = new Set();
@@ -116,6 +129,38 @@
 		if (redirectOnSubmitForm) {
 			redirectOnSubmitForm.submit();
 		}
+	}
+
+	function setCursorPosition(element, position) {
+		const range = document.createRange();
+		const selection = window.getSelection();
+
+		let charIndex = 0;
+		let nodeStack = [element];
+		let node,
+			foundStart = false;
+
+		range.setStart(element, 0);
+		range.collapse(true);
+
+		// Find the text node and offset for the position
+		while (!foundStart && (node = nodeStack.pop())) {
+			if (node.nodeType === Node.TEXT_NODE) {
+				const nextCharIndex = charIndex + node.textContent.length;
+				if (position >= charIndex && position <= nextCharIndex) {
+					range.setStart(node, position - charIndex);
+					foundStart = true;
+				}
+				charIndex = nextCharIndex;
+			} else {
+				for (let i = node.childNodes.length - 1; i >= 0; i--) {
+					nodeStack.push(node.childNodes[i]);
+				}
+			}
+		}
+
+		selection.removeAllRanges();
+		selection.addRange(range);
 	}
 </script>
 
@@ -358,11 +403,52 @@
 								type="text"
 								id="success-url"
 								name="successUrl"
-								value={data.form.successUrl}
-								oninput={() => (redirectUrlFormDirty = true)}
-								class="w-full rounded-sm border border-zinc-300 p-0.5 text-sm placeholder:text-zinc-400 focus-visible:border-blue-600"
+								value={successUrl}
+								class="hidden"
 								placeholder="https://yourapp.com/form/success"
 							/>
+							<div
+								bind:this={successUrlInput}
+								contenteditable="plaintext-only"
+								oninput={() => {
+									redirectUrlFormDirty = true;
+
+									successUrl = successUrlInput?.textContent;
+
+									// save cursor position
+									const selection = window.getSelection();
+									const range = selection?.getRangeAt(0);
+									const preCaretRange = range?.cloneRange();
+									preCaretRange?.selectNodeContents(successUrlInput);
+									preCaretRange?.setEnd(range?.endContainer, range?.endOffset);
+									const cursorPosition = preCaretRange?.toString().length;
+
+									successUrlInput.innerHTML = successUrl;
+
+									for (let i = 0; i < fields.length; i++) {
+										if (successUrl.includes(`@${fields[i].id}`)) {
+											successUrlInput.innerHTML = successUrl.replaceAll(
+												`@${fields[i].id}`,
+												`<span style="background-color: #f4f4f5; font-weight: 500; border-radius: 5px; padding-left: 0.5px; padding-right: 0.5px;">@${fields[i].id}</span>`
+											);
+										}
+									}
+
+									// restore cursor position
+									setCursorPosition(successUrlInput, cursorPosition);
+								}}
+								class="w-full overflow-hidden rounded-sm border border-zinc-300 p-0.5 text-sm placeholder:text-zinc-400 focus-visible:border-blue-600"
+							>
+								{data.form.successUrl}
+							</div>
+							{#if successUrl === ''}
+								<!-- Placeholder -->
+								<div
+									class="pointer-events-none absolute translate-x-[3px] translate-y-[-23px] text-sm text-zinc-400 select-none"
+								>
+									https://yourapp.com/form/success
+								</div>
+							{/if}
 						</div>
 						<div>
 							<label for="failure-url" class="text-xs font-medium">Failure URL</label>
