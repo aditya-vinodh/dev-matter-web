@@ -29,7 +29,7 @@
 			><ChevronLeft size={16} />All blogs</a
 		>
 
-		<p class="text-sm text-zinc-500">Jul 3, 2025 • 2 min read</p>
+		<p class="text-sm text-zinc-500">Jul 7, 2025 • 2 min read</p>
 
 		<h1 class="mb-2 text-3xl font-semibold tracking-tight text-pretty">
 			Why Developers Are Moving Away from Google Forms for Production Apps

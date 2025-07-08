@@ -3,6 +3,18 @@
 
 	const blogs = [
 		{
+			slug: 'how-to-collect-form-data-from-static-sites-using-a-simple-api',
+			title: 'How to Collect Form Data from Static Sites Using a Simple API',
+			description:
+				'Learn how to easily collect form data from static sites without a backend. Explore options, use cases, and how form APIs like DevMatter simplify the process and let you scale later.',
+			date: 'Jul 8, 2025',
+			author: {
+				name: 'Aditya',
+				picture: adityaPicture,
+				title: 'Founder'
+			}
+		},
+		{
 			slug: 'why-developers-are-moving-away-from-google-forms-for-production-apps',
 			date: 'Jul 7, 2024',
 			title: 'Why Developers Are Moving Away from Google Forms for Production Apps',

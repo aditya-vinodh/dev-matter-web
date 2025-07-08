@@ -13,7 +13,7 @@
 		name="description"
 		content="Learn about the different options for handling form submissions without managing your own backend."
 	/>
-	<meta name="og:title" content="Welcome to DevMatter" />
+	<meta name="og:title" content="How to Handle Form Submissions Without a Backend" />
 	<meta
 		name="og:description"
 		content="Learn about the different options for handling form submissions without managing your own backend."

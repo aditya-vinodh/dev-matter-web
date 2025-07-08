@@ -11,7 +11,7 @@
 		name="description"
 		content="Learn the best way to build custom forms using Tailwind CSS and a form API backend. Easily style professional forms and handle submissions with DevMatter — get real-time push notifications and manage responses on the go."
 	/>
-	<meta name="og:title" content="Welcome to DevMatter" />
+	<meta name="og:title" content="Best Way to Build Forms with Tailwind and a Form API" />
 	<meta
 		name="og:description"
 		content="Learn the best way to build custom forms using Tailwind CSS and a form API backend. Easily style professional forms and handle submissions with DevMatter — get real-time push notifications and manage responses on the go."
@@ -26,7 +26,7 @@
 			><ChevronLeft size={16} />All blogs</a
 		>
 
-		<p class="text-sm text-zinc-500">Jul 3, 2025 • 3 min read</p>
+		<p class="text-sm text-zinc-500">Jul 4, 2025 • 3 min read</p>
 
 		<h1 class="mb-2 text-3xl font-semibold tracking-tight text-pretty">
 			Best Way to Build Forms with Tailwind and a Form API
