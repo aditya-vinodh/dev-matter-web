@@ -42,7 +42,7 @@
 					<enhanced:img
 						src="$lib/images/docs/forms/create-form.png"
 						alt="Screenshot of app dashboard"
-						class="mx-auto max-w-xl"
+						class="mx-auto w-full max-w-xl"
 					/>
 				</div>
 
@@ -75,6 +75,7 @@
 					<enhanced:img
 						src="$lib/images/docs/forms/form-visibility.png"
 						alt="Screenshot of configuring form visibility"
+						class="mx-auto w-full max-w-lg"
 					/>
 				</div>
 
@@ -100,7 +101,7 @@
 					<enhanced:img
 						src="$lib/images/docs/forms/form-schema.png"
 						alt="Screenshot of configuring form's schema"
-						class="mx-auto max-w-xl"
+						class="mx-auto w-full max-w-xl"
 					/>
 				</div>
 
@@ -217,7 +218,7 @@
 					<enhanced:img
 						src="$lib/images/docs/forms/form-redirect.png"
 						alt="Screenshot of configuring form redirect URLs"
-						class="mx-auto max-w-xs"
+						class="mx-auto w-full max-w-xs"
 					/>
 				</div>
 
