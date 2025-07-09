@@ -30,7 +30,13 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 	const data = await res.json();
 
-	setSessionTokenCookie(event, data.sessionToken, new Date(data.expiresAt));
-
-	return redirect(303, '/');
+	if (event.cookies.get('mobileAuth')) {
+		return redirect(
+			303,
+			`devmatter://auth?token=${data.sessionToken}&userId=${data.user.id}&email=${data.user.email}&name=${data.user.name}&emailVerified=${data.user.emailVerified}&expiresAt=${data.expiresAt}`
+		);
+	} else {
+		setSessionTokenCookie(event, data.sessionToken, new Date(data.expiresAt));
+		return redirect(303, '/');
+	}
 }
