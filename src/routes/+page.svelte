@@ -8,6 +8,8 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
+
+	let lang = $state('html');
 </script>
 
 <svelte:head>
@@ -33,7 +35,7 @@
 				</div>
 			</a>
 			<h1 class="py-4 text-6xl font-semibold tracking-tighter text-balance xl:text-7xl">
-				A better way to manage your apps
+				The form backend for developers
 			</h1>
 			<p class="py-4 text-lg font-medium text-balance text-zinc-500 xl:text-xl">
 				Collect data from contact, feedback, and support forms. Get notified and respond to your
@@ -57,8 +59,85 @@
 				<enhanced:img
 					src="../lib/images/screenshot.webp?w=540"
 					alt="screenshot"
+					fetchpriority="high"
 					class="mx-auto mt-10 w-72 lg:mt-0 lg:w-full"
 				/>
+			</div>
+		</div>
+
+		<div class="col-span-12 mt-24 grid grid-cols-2 gap-10">
+			<div class="col-span-2 xl:col-span-1">
+				<p class="font-medium text-blue-600">Focus on what's important</p>
+				<p class="py-1 text-3xl font-semibold tracking-tight">Simple and Flexible Forms API</p>
+
+				<p class="py-2 pt-6 leading-loose text-zinc-600">
+					DevMatter is not a form builder. It's an API. A very simple one.
+				</p>
+				<p class="py-2 pb-4 leading-loose text-zinc-600">
+					Call our API, we store the response, and you can do whatever you want with it. Review it
+					later, analyze it, add your own custom logic, and more. You are in full control of the UX
+					and logic.
+				</p>
+			</div>
+			<div class="col-span-2 flex flex-col xl:col-span-1">
+				<div class="flex w-full items-center gap-2 rounded-t-lg bg-zinc-800 p-2">
+					<button
+						onclick={() => (lang = 'html')}
+						class="rounded-lg {lang === 'html'
+							? 'bg-zinc-100 text-zinc-700'
+							: 'bg-zinc-700 text-zinc-100 hover:bg-zinc-700/90'} p-1 px-2 text-sm font-medium"
+						>HTML</button
+					>
+					<button
+						onclick={() => (lang = 'curl')}
+						class="rounded-lg {lang === 'curl'
+							? 'bg-zinc-100 text-zinc-700'
+							: 'bg-zinc-700 text-zinc-100 hover:bg-zinc-700/90'} p-1 px-2 text-sm font-medium"
+						>cURL</button
+					>
+					<button
+						onclick={() => (lang = 'js')}
+						class="rounded-lg {lang === 'js'
+							? 'bg-zinc-100 text-zinc-700'
+							: 'bg-zinc-700 text-zinc-100 hover:bg-zinc-700/90'} p-1 px-2 text-sm font-medium"
+						>JavaScript</button
+					>
+				</div>
+				<div class="grow overflow-auto rounded-b-lg bg-[#1f1f1f] px-4 pb-4">
+					<div class="inline-block min-w-full">
+						{#if lang === 'html'}
+							{@html data.forms.html}
+						{:else if lang === 'curl'}
+							{@html data.forms.curl}
+						{:else if lang === 'js'}
+							{@html data.forms.js}
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-span-12 mt-24 grid grid-cols-2 gap-10">
+			<div class="col-span-2 flex flex-col justify-center xl:col-span-1">
+				<enhanced:img
+					src="$lib/images/notification-screenshot.png"
+					loading="lazy"
+					class="rounded-4xl shadow-xl"
+					alt="Screenshot of push notifications on our mobile app"
+				/>
+			</div>
+			<div class="col-span-2 xl:col-span-1">
+				<p class="font-medium text-blue-600">Speed is the game</p>
+				<p class="py-1 text-3xl font-semibold tracking-tight">Get notified on-the-go</p>
+
+				<p class="py-2 leading-loose text-zinc-600">
+					View responses on our minimalistic mobile app, and get instant push notifications when a
+					new response is received.
+				</p>
+
+				<p class="py-2 leading-loose text-zinc-600">
+					Don't wrangle with email, Slack, or custom webhooks. Choose simplicity!
+				</p>
 			</div>
 		</div>
 
