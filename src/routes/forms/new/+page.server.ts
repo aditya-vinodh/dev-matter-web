@@ -22,6 +22,9 @@ export const actions = {
 
 		const data = await res.json();
 		if (!res.ok) {
+			if (data.error === 'limit-reached') {
+				return redirect(303, `/forms/limit-reached`);
+			}
 			return fail(res.status, data.error);
 		}
 

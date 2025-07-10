@@ -40,6 +40,7 @@ export const actions = {
 		});
 
 		const data = await res.json();
+		console.log(data);
 		if (!res.ok) {
 			return fail(res.status, data);
 		}

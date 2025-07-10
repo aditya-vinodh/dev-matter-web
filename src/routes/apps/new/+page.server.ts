@@ -6,7 +6,24 @@ export async function load(event) {
 		return redirect(302, '/login');
 	}
 
-	return {};
+	let apps = [];
+	if (event.locals.user) {
+		const token = event.cookies.get('session');
+		const res = await fetch(`${env.API_URL}/apps`, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+
+		apps = await res.json();
+	}
+
+	const parentData = await event.parent();
+
+	return {
+		...parentData,
+		apps
+	};
 }
 
 export const actions = {

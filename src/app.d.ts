@@ -8,6 +8,7 @@ declare global {
 				id: number;
 				email: string;
 				name: string;
+				pricingPlan: string;
 				emailVerified: boolean;
 			} | null;
 			session: {

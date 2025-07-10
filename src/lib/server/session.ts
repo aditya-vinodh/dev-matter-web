@@ -37,7 +37,6 @@ export async function validateSessionToken(
 	}
 
 	const data = (await res.json()) as SessionValidationResult;
-	console.log(data);
 	return data;
 }
 
@@ -52,6 +51,7 @@ export interface User {
 	email: string;
 	name: string;
 	emailVerified: boolean;
+	pricingPlan: string;
 }
 
 type SessionValidationResult = { session: Session; user: User } | { session: null; user: null };

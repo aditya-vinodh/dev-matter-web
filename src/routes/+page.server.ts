@@ -42,7 +42,7 @@ const exampleFetchRequestCode = highlighter.codeToHtml(exampleFetchRequest, {
 	theme: 'min-dark'
 });
 
-export const load: PageServerLoad = async ({ locals, cookies, fetch }) => {
+export const load: PageServerLoad = async ({ locals, cookies, fetch, parent }) => {
 	let apps = [];
 	if (locals.user) {
 		const token = cookies.get('session');
@@ -55,7 +55,10 @@ export const load: PageServerLoad = async ({ locals, cookies, fetch }) => {
 		apps = await res.json();
 	}
 
+	const parentData = await parent();
+
 	return {
+		...parentData,
 		apps,
 		forms: {
 			html: exampleHTMLFormHtml,
