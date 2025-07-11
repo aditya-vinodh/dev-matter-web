@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Header from '$lib/ui/Header.svelte';
+	import Zap from '@lucide/svelte/icons/zap';
 	import ExternalLink from '@lucide/svelte/icons/external-link';
 	import type { PageProps } from './$types';
-	import { enhance } from '$app/forms';
 
 	let { data }: PageProps = $props();
 </script>
@@ -23,6 +23,14 @@
 		<div class="flex flex-col gap-2">
 			<div class="text-sm font-medium text-zinc-500">Pricing plan</div>
 			<div class="capitalize">{data.user?.pricingPlan}</div>
+
+			{#if data.user?.pricingPlan === 'free'}
+				<a
+					href="/upgrade"
+					class="mt-5 flex w-fit items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-600/90"
+					><Zap size={16} />Upgrade</a
+				>
+			{/if}
 		</div>
 
 		{#if data.user?.pricingPlan !== 'free'}
