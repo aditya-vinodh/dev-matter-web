@@ -3,6 +3,18 @@
 
 	const blogs = [
 		{
+			slug: 'the-easiest-way-to-add-forms-to-a-next-js-app-no-backend-needed',
+			title: 'The Easiest Way to Add Forms to a Next.js App (No Backend Needed)',
+			description:
+				'Learn how to handle form submission in Next.js without a server. Explore the easiest way to add forms to your Next.js app using a form API backend like DevMatter—no backend setup needed.',
+			date: 'Jul 9, 2025',
+			author: {
+				name: 'Aditya',
+				picture: adityaPicture,
+				title: 'Founder'
+			}
+		},
+		{
 			slug: 'how-to-collect-form-data-from-static-sites-using-a-simple-api',
 			title: 'How to Collect Form Data from Static Sites Using a Simple API',
 			description:
