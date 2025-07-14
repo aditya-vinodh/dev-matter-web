@@ -6,12 +6,15 @@
 	import Globe from '@lucide/svelte/icons/globe';
 	import Archive from '@lucide/svelte/icons/archive';
 	import Trash from '@lucide/svelte/icons/trash';
+	import Image from '@lucide/svelte/icons/image';
+	import File from '@lucide/svelte/icons/file';
 	import X from '@lucide/svelte/icons/x';
 	import type { PageProps } from './$types';
 	import { Toaster, toast } from 'svelte-sonner';
 	import { enhance } from '$app/forms';
-	import { AlertDialog, Toggle } from 'bits-ui';
+	import { AlertDialog, Toggle, Dialog } from 'bits-ui';
 	import { onMount } from 'svelte';
+	import { formatBytes } from '$lib/format-bytes';
 
 	let { data }: PageProps = $props();
 	let formResponses = $state(data.form.responses);
@@ -328,6 +331,7 @@
 								>
 									<option value="string">string</option>
 									<option value="number">number</option>
+									<option value="files">files</option>
 								</select>
 							</div>
 							<div class="flex items-center gap-2">
@@ -581,11 +585,87 @@
 							{/each} -->
 							{#each version.fields as field (field.id)}
 								{#if response.response[field.id]}
+									{@const value = response.response[field.id]}
 									<div>
 										<p class="mb-1 text-xs font-medium text-zinc-500">
 											{field.label}
 										</p>
-										<p class="py-0.5 text-sm">{response.response[field.id]}</p>
+										{#if typeof value === 'string' || typeof value === 'number'}
+											<p class="py-0.5 text-sm">{response.response[field.id]}</p>
+										{:else}
+											<div class="flex flex-wrap items-center gap-4">
+												{#each value.files as file (file.key)}
+													<Dialog.Root>
+														<Dialog.Trigger
+															class="grid size-40 grid-rows-12 rounded-sm border border-blue-950/10 bg-blue-100 p-1"
+														>
+															<div class="row-span-3 text-left text-sm text-blue-950">
+																{file.name}
+															</div>
+															<div class="row-span-6 flex flex-col items-center justify-center">
+																{#if file.content_type.startsWith('image')}
+																	<Image size={36} strokeWidth={1.5} class="stroke-blue-950" />
+																{:else}
+																	<File size={36} strokeWidth={1.5} class="stroke-blue-950" />
+																{/if}
+															</div>
+															<div
+																class="row-span-3 flex flex-col justify-end text-left text-xs text-blue-900/50"
+															>
+																{formatBytes(file.size)}
+															</div>
+														</Dialog.Trigger>
+														<Dialog.Portal>
+															<Dialog.Overlay
+																class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/30"
+															/>
+															<Dialog.Content
+																class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 h-[90vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white shadow-xl outline-hidden"
+															>
+																<div class="flex flex-col items-center justify-center">
+																	<div
+																		class="flex w-full shrink-0 items-center justify-between rounded-t-xl bg-zinc-100 p-2 text-left"
+																	>
+																		<div class="flex flex-col text-sm">
+																			<span>{file.name}</span>
+																			<span class="text-xs text-zinc-500"
+																				>{formatBytes(file.size)}</span
+																			>
+																		</div>
+																		<div class="flex items-center gap-4 pr-2">
+																			<a
+																				href={file.url}
+																				target="_blank"
+																				download
+																				class="rounded-xl bg-zinc-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-zinc-800/90"
+																				>Download</a
+																			>
+																			<Dialog.Close><X size={16} /></Dialog.Close>
+																		</div>
+																	</div>
+																	<div
+																		class="flex h-max w-full grow flex-col justify-center overflow-hidden py-4"
+																	>
+																		{#if file.content_type.startsWith('image')}
+																			<img
+																				src={file.url}
+																				alt="preview"
+																				class="mx-auto h-full max-h-[calc(90vh-82px)] w-full max-w-max object-contain object-center"
+																			/>
+																		{:else}
+																			<p class="mt-20 px-10 text-center text-balance text-zinc-600">
+																				We can't show a preview of this file. Please download to
+																				view it.
+																			</p>
+																		{/if}
+																	</div>
+																</div>
+															</Dialog.Content>
+														</Dialog.Portal>
+													</Dialog.Root>
+												{/each}
+											</div>
+										{/if}
 									</div>
 								{/if}
 							{/each}

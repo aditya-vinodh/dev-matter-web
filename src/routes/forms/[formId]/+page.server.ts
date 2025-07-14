@@ -8,6 +8,8 @@ export async function load(event) {
 		return redirect(302, '/login');
 	}
 
+	const parentData = await event.parent();
+
 	const res = await event.fetch(`${env.API_URL}/forms/${formId}`, {
 		headers: {
 			Authorization: `Bearer ${event.cookies.get('session')}`
@@ -19,7 +21,10 @@ export async function load(event) {
 	}
 	const data = await res.json();
 
-	return { form: data };
+	return {
+		...parentData,
+		form: data
+	};
 }
 
 export const actions = {

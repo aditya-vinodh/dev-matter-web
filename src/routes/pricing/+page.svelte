@@ -52,6 +52,10 @@
 					<Check size={16} class="stroke-blue-600" />
 					<p>100 submissions/month</p>
 				</div>
+				<div class="flex items-center gap-2">
+					<Check size={16} class="stroke-blue-600" />
+					<p>1 GB file storage</p>
+				</div>
 			</div>
 		</div>
 		<div class="col-span-2 rounded-xl border border-zinc-300 p-4 px-8 pb-8 shadow-sm sm:col-span-1">
@@ -83,6 +87,10 @@
 				<div class="flex items-center gap-2">
 					<Check size={16} class="stroke-blue-600" />
 					<p>1000 submissions/month</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<Check size={16} class="stroke-blue-600" />
+					<p>200 GB file storage</p>
 				</div>
 			</div>
 		</div>

@@ -21,6 +21,15 @@
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
 	<meta name="twitter:image" content={Thumbnail.img.src} />
+	<meta
+		name="twitter:title"
+		content="Why Developers Are Moving Away from Google Forms for Production Apps"
+	/>
+	<meta
+		name="twitter:description"
+		content="Discover why developers are choosing Google Forms alternatives for production apps. Learn about form backend limitations and explore developer-friendly solutions with proper APIs, customization, and control."
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-2xl">

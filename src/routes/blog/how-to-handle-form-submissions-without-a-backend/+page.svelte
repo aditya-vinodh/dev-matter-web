@@ -20,6 +20,12 @@
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
 	<meta name="twitter:image" content={Thumbnail.img.src} />
+	<meta name="twitter:title" content="How to Handle Form Submissions Without a Backend" />
+	<meta
+		name="twitter:description"
+		content="Learn about the different options for handling form submissions without managing your own backend."
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-2xl">

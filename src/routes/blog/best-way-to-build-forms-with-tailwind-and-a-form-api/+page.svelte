@@ -18,6 +18,12 @@
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
 	<meta name="twitter:image" content={Thumbnail.img.src} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Best Way to Build Forms with Tailwind and a Form API" />
+	<meta
+		name="twitter:description"
+		content="Learn the best way to build custom forms using Tailwind CSS and a form API backend. Easily style professional forms and handle submissions with DevMatter — get real-time push notifications and manage responses on the go."
+	/>
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-2xl">

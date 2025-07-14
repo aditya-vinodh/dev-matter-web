@@ -17,6 +17,15 @@
 		content="Learn how to easily collect form data from static sites without a backend. Explore options, use cases, and how form APIs like DevMatter simplify the process and let you scale later."
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta
+		name="twitter:title"
+		content="How to Collect Form Data from Static Sites Using a Simple API"
+	/>
+	<meta
+		name="twitter:description"
+		content="Learn how to easily collect form data from static sites without a backend. Explore options, use cases, and how form APIs like DevMatter simplify the process and let you scale later."
+	/>
 	<meta name="twitter:image" content={Thumbnail.img.src} />
 </svelte:head>
 

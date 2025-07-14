@@ -21,6 +21,15 @@
 	/>
 	<meta name="og:image" content={Thumbnail.img.src} />
 	<meta name="twitter:image" content={Thumbnail.img.src} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta
+		name="twitter:description"
+		content="Learn how to handle form submission in Next.js without a server. Explore the easiest way to add forms to your Next.js app using a form API backend like DevMatter—no backend setup needed."
+	/>
+	<meta
+		name="twitter:title"
+		content="The Easiest Way to Add Forms to a Next.js App Without Backend Needed"
+	/>
 </svelte:head>
 
 <main class="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 pt-10 pb-32 lg:max-w-2xl">
