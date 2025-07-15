@@ -28,7 +28,7 @@
 				href="/changelog"
 				class="flex w-fit items-center gap-4 rounded-full border border-zinc-300 px-2 py-1 text-xs xl:px-3 xl:py-1.5 xl:text-sm"
 			>
-				<span class="font-medium text-blue-600">Just shipped v0.3</span>
+				<span class="font-medium text-blue-600">Just shipped v0.4</span>
 				<span class="h-5 border border-r-0 border-zinc-300"></span>
 				<div class="flex items-center gap-2 text-zinc-700">
 					See what's new <ChevronRight size={16} class="stroke-zinc-700" />

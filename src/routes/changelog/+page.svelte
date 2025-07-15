@@ -6,6 +6,13 @@
 
 	const versions = [
 		{
+			tag: 'v0.4',
+			title: 'File support',
+			description:
+				'Added support for uploading files to forms. Any format or number: up to total response size of 20MB.',
+			date: 'Jul 14, 2025'
+		},
+		{
 			tag: 'v0.3',
 			title: 'Form redirects',
 			description:
