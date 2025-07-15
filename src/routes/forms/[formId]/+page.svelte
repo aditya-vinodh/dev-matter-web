@@ -597,22 +597,24 @@
 												{#each value.files as file (file.key)}
 													<Dialog.Root>
 														<Dialog.Trigger
-															class="grid size-40 grid-rows-12 rounded-sm border border-blue-950/10 bg-blue-100 p-1"
+															class="flex items-center gap-2 rounded-sm border border-blue-950/10 bg-blue-100 p-1"
 														>
-															<div class="row-span-3 text-left text-sm text-blue-950">
-																{file.name}
-															</div>
 															<div class="row-span-6 flex flex-col items-center justify-center">
 																{#if file.content_type.startsWith('image')}
-																	<Image size={36} strokeWidth={1.5} class="stroke-blue-950" />
+																	<Image size={24} strokeWidth={1.5} class="stroke-blue-950" />
 																{:else}
-																	<File size={36} strokeWidth={1.5} class="stroke-blue-950" />
+																	<File size={24} strokeWidth={1.5} class="stroke-blue-950" />
 																{/if}
 															</div>
-															<div
-																class="row-span-3 flex flex-col justify-end text-left text-xs text-blue-900/50"
-															>
-																{formatBytes(file.size)}
+															<div class="flex flex-col gap-1">
+																<div class="row-span-3 text-left text-sm text-blue-950">
+																	{file.name}
+																</div>
+																<div
+																	class="row-span-3 flex flex-col justify-end text-left text-xs text-blue-900/50"
+																>
+																	{formatBytes(file.size)}
+																</div>
 															</div>
 														</Dialog.Trigger>
 														<Dialog.Portal>
@@ -622,7 +624,7 @@
 															<Dialog.Content
 																class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 h-[90vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white shadow-xl outline-hidden"
 															>
-																<div class="flex flex-col items-center justify-center">
+																<div class="flex h-full flex-col items-center justify-center">
 																	<div
 																		class="flex w-full shrink-0 items-center justify-between rounded-t-xl bg-zinc-100 p-2 text-left"
 																	>
@@ -652,6 +654,12 @@
 																				alt="preview"
 																				class="mx-auto h-full max-h-[calc(90vh-82px)] w-full max-w-max object-contain object-center"
 																			/>
+																		{:else if file.content_type === 'application/pdf'}
+																			<iframe
+																				title="PDF Preview"
+																				src={file.url}
+																				class="h-full max-h-[calc(90vh-82px)] w-full"
+																			></iframe>
 																		{:else}
 																			<p class="mt-20 px-10 text-center text-balance text-zinc-600">
 																				We can't show a preview of this file. Please download to
